@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MDAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="電影Movies">
+          <Key>
+            <PropertyRef Name="電影編號Movie_ID" />
+          </Key>
+          <Property Name="電影編號Movie_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="系列編號Series_ID" Type="int" />
+          <Property Name="中文標題Title_Cht" Type="nvarchar" MaxLength="50" />
+          <Property Name="英文標題Title_Eng" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="上映年份Release_Year" Type="int" Nullable="false" />
+          <Property Name="上映日期Release_Date" Type="date" />
+          <Property Name="片長Runtime" Type="int" Nullable="false" />
+          <Property Name="電影分級編號Rating_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="評分Rate" Type="numeric" Precision="2" Scale="1" />
+          <Property Name="票房BoxOffice" Type="nvarchar" MaxLength="20" />
+          <Property Name="劇情大綱Plot" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="電影代碼MovieCode">
+          <Key>
+            <PropertyRef Name="電影代碼Movie_Code" />
+          </Key>
+          <Property Name="電影代碼Movie_Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="電影編號Movie_ID" Type="int" Nullable="false" />
+          <Property Name="語言編號Language_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="電影圖片">
+          <Key>
+            <PropertyRef Name="電影圖片編號MI_ID" />
+          </Key>
+          <Property Name="電影圖片編號MI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="電影編號Movie_ID" Type="int" Nullable="false" />
+          <Property Name="圖片編號Pictue_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="電影語言MovieLanguage">
+          <Key>
+            <PropertyRef Name="語言編號Language_ID" />
+          </Key>
+          <Property Name="語言編號Language_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="語言名稱Language_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="圖片庫MovieImages">
+          <Key>
+            <PropertyRef Name="圖片編號Image_ID" />
+          </Key>
+          <Property Name="圖片編號Image_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="圖片Image" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_電影代碼 Movie Code_電影 Movies">
+          <End Role="電影Movies" Type="Self.電影Movies" Multiplicity="1" />
+          <End Role="電影代碼MovieCode" Type="Self.電影代碼MovieCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="電影Movies">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Principal>
+            <Dependent Role="電影代碼MovieCode">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_電影代碼 Movie Code_電影語言 Movie Language">
+          <End Role="電影語言MovieLanguage" Type="Self.電影語言MovieLanguage" Multiplicity="1" />
+          <End Role="電影代碼MovieCode" Type="Self.電影代碼MovieCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="電影語言MovieLanguage">
+              <PropertyRef Name="語言編號Language_ID" />
+            </Principal>
+            <Dependent Role="電影代碼MovieCode">
+              <PropertyRef Name="語言編號Language_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_電影圖片_電影Movies">
+          <End Role="電影Movies" Type="Self.電影Movies" Multiplicity="1" />
+          <End Role="電影圖片" Type="Self.電影圖片" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="電影Movies">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Principal>
+            <Dependent Role="電影圖片">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_電影圖片_圖片庫MovieImages2">
+          <End Role="圖片庫MovieImages" Type="Self.圖片庫MovieImages" Multiplicity="1" />
+          <End Role="電影圖片" Type="Self.電影圖片" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="圖片庫MovieImages">
+              <PropertyRef Name="圖片編號Image_ID" />
+            </Principal>
+            <Dependent Role="電影圖片">
+              <PropertyRef Name="圖片編號Pictue_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MDAModelStoreContainer">
+          <EntitySet Name="電影Movies" EntityType="Self.電影Movies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="電影代碼MovieCode" EntityType="Self.電影代碼MovieCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="電影圖片" EntityType="Self.電影圖片" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="電影語言MovieLanguage" EntityType="Self.電影語言MovieLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="圖片庫MovieImages" EntityType="Self.圖片庫MovieImages" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_電影代碼 Movie Code_電影 Movies" Association="Self.FK_電影代碼 Movie Code_電影 Movies">
+            <End Role="電影Movies" EntitySet="電影Movies" />
+            <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_電影代碼 Movie Code_電影語言 Movie Language" Association="Self.FK_電影代碼 Movie Code_電影語言 Movie Language">
+            <End Role="電影語言MovieLanguage" EntitySet="電影語言MovieLanguage" />
+            <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_電影圖片_電影Movies" Association="Self.FK_電影圖片_電影Movies">
+            <End Role="電影Movies" EntitySet="電影Movies" />
+            <End Role="電影圖片" EntitySet="電影圖片" />
+          </AssociationSet>
+          <AssociationSet Name="FK_電影圖片_圖片庫MovieImages2" Association="Self.FK_電影圖片_圖片庫MovieImages2">
+            <End Role="圖片庫MovieImages" EntitySet="圖片庫MovieImages" />
+            <End Role="電影圖片" EntitySet="電影圖片" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MDAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="圖片庫MovieImages">
+          <Key>
+            <PropertyRef Name="圖片編號Image_ID" />
+          </Key>
+          <Property Name="圖片編號Image_ID" Type="Int32" Nullable="false" />
+          <Property Name="圖片Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="電影圖片" Relationship="MDAModel.FK_電影圖片_圖片庫MovieImages2" FromRole="圖片庫MovieImages" ToRole="電影圖片" />
+        </EntityType>
+        <EntityContainer Name="MDAEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="圖片庫MovieImages" EntityType="Self.圖片庫MovieImages" />
+          <EntitySet Name="電影Movies" EntityType="MDAModel.電影Movies" />
+          <EntitySet Name="電影圖片" EntityType="MDAModel.電影圖片" />
+          <AssociationSet Name="FK_電影圖片_電影Movies" Association="MDAModel.FK_電影圖片_電影Movies">
+            <End Role="電影Movies" EntitySet="電影Movies" />
+            <End Role="電影圖片" EntitySet="電影圖片" />
+          </AssociationSet>
+          <AssociationSet Name="FK_電影圖片_圖片庫MovieImages2" Association="MDAModel.FK_電影圖片_圖片庫MovieImages2">
+            <End Role="圖片庫MovieImages" EntitySet="圖片庫MovieImages" />
+            <End Role="電影圖片" EntitySet="電影圖片" />
+          </AssociationSet>
+          <EntitySet Name="電影語言MovieLanguage" EntityType="MDAModel.電影語言MovieLanguage" />
+          <EntitySet Name="電影代碼MovieCode" EntityType="MDAModel.電影代碼MovieCode" />
+          <AssociationSet Name="FK_電影代碼_Movie_Code_電影_Movies" Association="MDAModel.FK_電影代碼_Movie_Code_電影_Movies">
+            <End Role="電影Movies" EntitySet="電影Movies" />
+            <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_電影代碼_Movie_Code_電影語言_Movie_Language" Association="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language">
+            <End Role="電影語言MovieLanguage" EntitySet="電影語言MovieLanguage" />
+            <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="電影Movies">
+          <Key>
+            <PropertyRef Name="電影編號Movie_ID" />
+          </Key>
+          <Property Name="電影編號Movie_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="系列編號Series_ID" Type="Int32" />
+          <Property Name="中文標題Title_Cht" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="英文標題Title_Eng" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="上映年份Release_Year" Type="Int32" Nullable="false" />
+          <Property Name="上映日期Release_Date" Type="DateTime" Precision="0" />
+          <Property Name="片長Runtime" Type="Int32" Nullable="false" />
+          <Property Name="電影分級編號Rating_ID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="評分Rate" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="票房BoxOffice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="劇情大綱Plot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="電影圖片" Relationship="MDAModel.FK_電影圖片_電影Movies" FromRole="電影Movies" ToRole="電影圖片" />
+          <NavigationProperty Name="電影代碼MovieCode" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影_Movies" FromRole="電影Movies" ToRole="電影代碼MovieCode" />
+        </EntityType>
+        <EntityType Name="電影圖片">
+          <Key>
+            <PropertyRef Name="電影圖片編號MI_ID" />
+          </Key>
+          <Property Name="電影圖片編號MI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="電影編號Movie_ID" Type="Int32" Nullable="false" />
+          <Property Name="圖片編號Pictue_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="電影Movies" Relationship="MDAModel.FK_電影圖片_電影Movies" FromRole="電影圖片" ToRole="電影Movies" />
+          <NavigationProperty Name="圖片庫MovieImages" Relationship="MDAModel.FK_電影圖片_圖片庫MovieImages2" FromRole="電影圖片" ToRole="圖片庫MovieImages" />
+        </EntityType>
+        <Association Name="FK_電影圖片_電影Movies">
+          <End Type="MDAModel.電影Movies" Role="電影Movies" Multiplicity="1" />
+          <End Type="MDAModel.電影圖片" Role="電影圖片" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="電影Movies">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Principal>
+            <Dependent Role="電影圖片">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_電影圖片_圖片庫MovieImages2">
+          <End Type="MDAModel.圖片庫MovieImages" Role="圖片庫MovieImages" Multiplicity="1" />
+          <End Type="MDAModel.電影圖片" Role="電影圖片" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="圖片庫MovieImages">
+              <PropertyRef Name="圖片編號Image_ID" />
+            </Principal>
+            <Dependent Role="電影圖片">
+              <PropertyRef Name="圖片編號Pictue_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="電影語言MovieLanguage">
+          <Key>
+            <PropertyRef Name="語言編號Language_ID" />
+          </Key>
+          <Property Name="語言編號Language_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="語言名稱Language_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="電影代碼MovieCode" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language" FromRole="電影語言MovieLanguage" ToRole="電影代碼MovieCode" />
+        </EntityType>
+        <EntityType Name="電影代碼MovieCode">
+          <Key>
+            <PropertyRef Name="電影代碼Movie_Code" />
+          </Key>
+          <Property Name="電影代碼Movie_Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="電影編號Movie_ID" Type="Int32" Nullable="false" />
+          <Property Name="語言編號Language_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="電影Movies" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影_Movies" FromRole="電影代碼MovieCode" ToRole="電影Movies" />
+          <NavigationProperty Name="電影語言MovieLanguage" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language" FromRole="電影代碼MovieCode" ToRole="電影語言MovieLanguage" />
+        </EntityType>
+        <Association Name="FK_電影代碼_Movie_Code_電影_Movies">
+          <End Type="MDAModel.電影Movies" Role="電影Movies" Multiplicity="1" />
+          <End Type="MDAModel.電影代碼MovieCode" Role="電影代碼MovieCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="電影Movies">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Principal>
+            <Dependent Role="電影代碼MovieCode">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_電影代碼_Movie_Code_電影語言_Movie_Language">
+          <End Type="MDAModel.電影語言MovieLanguage" Role="電影語言MovieLanguage" Multiplicity="1" />
+          <End Type="MDAModel.電影代碼MovieCode" Role="電影代碼MovieCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="電影語言MovieLanguage">
+              <PropertyRef Name="語言編號Language_ID" />
+            </Principal>
+            <Dependent Role="電影代碼MovieCode">
+              <PropertyRef Name="語言編號Language_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MDAModelStoreContainer" CdmEntityContainer="MDAEntities2">
+          <EntitySetMapping Name="圖片庫MovieImages">
+            <EntityTypeMapping TypeName="MDAModel.圖片庫MovieImages">
+              <MappingFragment StoreEntitySet="圖片庫MovieImages">
+                <ScalarProperty Name="圖片編號Image_ID" ColumnName="圖片編號Image_ID" />
+                <ScalarProperty Name="圖片Image" ColumnName="圖片Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="電影Movies">
+            <EntityTypeMapping TypeName="MDAModel.電影Movies">
+              <MappingFragment StoreEntitySet="電影Movies">
+                <ScalarProperty Name="劇情大綱Plot" ColumnName="劇情大綱Plot" />
+                <ScalarProperty Name="票房BoxOffice" ColumnName="票房BoxOffice" />
+                <ScalarProperty Name="評分Rate" ColumnName="評分Rate" />
+                <ScalarProperty Name="電影分級編號Rating_ID" ColumnName="電影分級編號Rating_ID" />
+                <ScalarProperty Name="片長Runtime" ColumnName="片長Runtime" />
+                <ScalarProperty Name="上映日期Release_Date" ColumnName="上映日期Release_Date" />
+                <ScalarProperty Name="上映年份Release_Year" ColumnName="上映年份Release_Year" />
+                <ScalarProperty Name="英文標題Title_Eng" ColumnName="英文標題Title_Eng" />
+                <ScalarProperty Name="中文標題Title_Cht" ColumnName="中文標題Title_Cht" />
+                <ScalarProperty Name="系列編號Series_ID" ColumnName="系列編號Series_ID" />
+                <ScalarProperty Name="電影編號Movie_ID" ColumnName="電影編號Movie_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="電影圖片">
+            <EntityTypeMapping TypeName="MDAModel.電影圖片">
+              <MappingFragment StoreEntitySet="電影圖片">
+                <ScalarProperty Name="圖片編號Pictue_ID" ColumnName="圖片編號Pictue_ID" />
+                <ScalarProperty Name="電影編號Movie_ID" ColumnName="電影編號Movie_ID" />
+                <ScalarProperty Name="電影圖片編號MI_ID" ColumnName="電影圖片編號MI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="電影語言MovieLanguage">
+            <EntityTypeMapping TypeName="MDAModel.電影語言MovieLanguage">
+              <MappingFragment StoreEntitySet="電影語言MovieLanguage">
+                <ScalarProperty Name="語言名稱Language_Name" ColumnName="語言名稱Language_Name" />
+                <ScalarProperty Name="語言編號Language_ID" ColumnName="語言編號Language_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="電影代碼MovieCode">
+            <EntityTypeMapping TypeName="MDAModel.電影代碼MovieCode">
+              <MappingFragment StoreEntitySet="電影代碼MovieCode">
+                <ScalarProperty Name="語言編號Language_ID" ColumnName="語言編號Language_ID" />
+                <ScalarProperty Name="電影編號Movie_ID" ColumnName="電影編號Movie_ID" />
+                <ScalarProperty Name="電影代碼Movie_Code" ColumnName="電影代碼Movie_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

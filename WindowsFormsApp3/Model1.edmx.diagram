@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="92696b01da054861af4955c8b7895a21" Name="Diagram1">
+        <EntityTypeShape EntityType="MDAModel.圖片庫MovieImages" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MDAModel.電影Movies" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="MDAModel.電影圖片" Width="1.5" PointX="3" PointY="3.25" />
+        <AssociationConnector Association="MDAModel.FK_電影圖片_電影Movies" />
+        <AssociationConnector Association="MDAModel.FK_電影圖片_圖片庫MovieImages2" />
+        <EntityTypeShape EntityType="MDAModel.電影語言MovieLanguage" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="MDAModel.電影代碼MovieCode" Width="1.5" PointX="3" PointY="6.25" />
+        <AssociationConnector Association="MDAModel.FK_電影代碼_Movie_Code_電影_Movies" />
+        <AssociationConnector Association="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
