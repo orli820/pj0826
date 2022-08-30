@@ -17,8 +17,9 @@ namespace WindowsFormsApp3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Poster());
-            Application.Run(new FormMain());
+            //Application.Run(new Member());
+            //Application.Run(new FormMain());
+            Application.Run(new MemberStation());
         }
     }
 }

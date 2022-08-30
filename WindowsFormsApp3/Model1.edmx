@@ -5,6 +5,25 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MDAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="會員Members">
+          <Key>
+            <PropertyRef Name="會員編號Members_ID" />
+          </Key>
+          <Property Name="會員編號Members_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="會員電話Cellphone" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="密碼Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="姓氏F_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="名字L_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="暱稱NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="生日BirthDate" Type="date" />
+          <Property Name="性別Gender" Type="int" />
+          <Property Name="電子信箱Email" Type="varchar" MaxLength="50" />
+          <Property Name="地址Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="紅利點數Point" Type="int" />
+          <Property Name="正式會員Formal" Type="bit" />
+          <Property Name="會員權限Permission" Type="bit" />
+          <Property Name="會員照片Image" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="電影Movies">
           <Key>
             <PropertyRef Name="電影編號Movie_ID" />
@@ -50,6 +69,26 @@
           </Key>
           <Property Name="圖片編號Image_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="圖片Image" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="優惠明細CouponList">
+          <Key>
+            <PropertyRef Name="優惠明細編號CouponList_ID" />
+          </Key>
+          <Property Name="優惠明細編號CouponList_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="會員編號Members_ID" Type="int" Nullable="false" />
+          <Property Name="優惠編號Coupon_ID" Type="int" Nullable="false" />
+          <Property Name="是否使用OX_CouponUsing" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="優惠總表Coupon">
+          <Key>
+            <PropertyRef Name="優惠編號Coupon_ID" />
+          </Key>
+          <Property Name="優惠編號Coupon_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="優惠名稱Coupon_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="優惠代碼Coupon_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="優惠折扣Discount" Type="money" Nullable="false" />
+          <Property Name="優惠截止日期DueDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="優惠所需紅利BonusCost" Type="int" />
         </EntityType>
         <Association Name="FK_電影代碼 Movie Code_電影 Movies">
           <End Role="電影Movies" Type="Self.電影Movies" Multiplicity="1" />
@@ -99,12 +138,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_優惠明細CouponList_優惠總表Coupon">
+          <End Role="優惠總表Coupon" Type="Self.優惠總表Coupon" Multiplicity="1" />
+          <End Role="優惠明細CouponList" Type="Self.優惠明細CouponList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="優惠總表Coupon">
+              <PropertyRef Name="優惠編號Coupon_ID" />
+            </Principal>
+            <Dependent Role="優惠明細CouponList">
+              <PropertyRef Name="優惠編號Coupon_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MDAModelStoreContainer">
+          <EntitySet Name="會員Members" EntityType="Self.會員Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="電影Movies" EntityType="Self.電影Movies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="電影代碼MovieCode" EntityType="Self.電影代碼MovieCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="電影圖片" EntityType="Self.電影圖片" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="電影語言MovieLanguage" EntityType="Self.電影語言MovieLanguage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="圖片庫MovieImages" EntityType="Self.圖片庫MovieImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="優惠明細CouponList" EntityType="Self.優惠明細CouponList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="優惠總表Coupon" EntityType="Self.優惠總表Coupon" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_電影代碼 Movie Code_電影 Movies" Association="Self.FK_電影代碼 Movie Code_電影 Movies">
             <End Role="電影Movies" EntitySet="電影Movies" />
             <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
@@ -120,6 +174,10 @@
           <AssociationSet Name="FK_電影圖片_圖片庫MovieImages2" Association="Self.FK_電影圖片_圖片庫MovieImages2">
             <End Role="圖片庫MovieImages" EntitySet="圖片庫MovieImages" />
             <End Role="電影圖片" EntitySet="電影圖片" />
+          </AssociationSet>
+          <AssociationSet Name="FK_優惠明細CouponList_優惠總表Coupon" Association="Self.FK_優惠明細CouponList_優惠總表Coupon">
+            <End Role="優惠總表Coupon" EntitySet="優惠總表Coupon" />
+            <End Role="優惠明細CouponList" EntitySet="優惠明細CouponList" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -155,6 +213,13 @@
           <AssociationSet Name="FK_電影代碼_Movie_Code_電影語言_Movie_Language" Association="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language">
             <End Role="電影語言MovieLanguage" EntitySet="電影語言MovieLanguage" />
             <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
+          </AssociationSet>
+          <EntitySet Name="優惠總表Coupon" EntityType="MDAModel.優惠總表Coupon" />
+          <EntitySet Name="會員Members" EntityType="MDAModel.會員Members" />
+          <EntitySet Name="優惠明細CouponList" EntityType="MDAModel.優惠明細CouponList" />
+          <AssociationSet Name="FK_優惠明細CouponList_優惠總表Coupon" Association="MDAModel.FK_優惠明細CouponList_優惠總表Coupon">
+            <End Role="優惠總表Coupon" EntitySet="優惠總表Coupon" />
+            <End Role="優惠明細CouponList" EntitySet="優惠明細CouponList" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="電影Movies">
@@ -251,6 +316,59 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="優惠總表Coupon">
+          <Key>
+            <PropertyRef Name="優惠編號Coupon_ID" />
+          </Key>
+          <Property Name="優惠編號Coupon_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="優惠名稱Coupon_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="優惠代碼Coupon_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="優惠折扣Discount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="優惠截止日期DueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="優惠所需紅利BonusCost" Type="Int32" />
+          <NavigationProperty Name="優惠明細CouponList" Relationship="MDAModel.FK_優惠明細CouponList_優惠總表Coupon" FromRole="優惠總表Coupon" ToRole="優惠明細CouponList" />
+          </EntityType>
+        <EntityType Name="會員Members">
+          <Key>
+            <PropertyRef Name="會員編號Members_ID" />
+          </Key>
+          <Property Name="會員編號Members_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="會員電話Cellphone" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="密碼Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="姓氏F_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="名字L_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="暱稱NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="生日BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="性別Gender" Type="Int32" />
+          <Property Name="電子信箱Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="地址Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="紅利點數Point" Type="Int32" />
+          <Property Name="正式會員Formal" Type="Boolean" />
+          <Property Name="會員權限Permission" Type="Boolean" />
+          <Property Name="會員照片Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="優惠明細CouponList">
+          <Key>
+            <PropertyRef Name="優惠明細編號CouponList_ID" />
+          </Key>
+          <Property Name="優惠明細編號CouponList_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="會員編號Members_ID" Type="Int32" Nullable="false" />
+          <Property Name="優惠編號Coupon_ID" Type="Int32" Nullable="false" />
+          <Property Name="是否使用OX_CouponUsing" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="優惠總表Coupon" Relationship="MDAModel.FK_優惠明細CouponList_優惠總表Coupon" FromRole="優惠明細CouponList" ToRole="優惠總表Coupon" />
+        </EntityType>
+        <Association Name="FK_優惠明細CouponList_優惠總表Coupon">
+          <End Type="MDAModel.優惠總表Coupon" Role="優惠總表Coupon" Multiplicity="1" />
+          <End Type="MDAModel.優惠明細CouponList" Role="優惠明細CouponList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="優惠總表Coupon">
+              <PropertyRef Name="優惠編號Coupon_ID" />
+            </Principal>
+            <Dependent Role="優惠明細CouponList">
+              <PropertyRef Name="優惠編號Coupon_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -305,6 +423,48 @@
                 <ScalarProperty Name="語言編號Language_ID" ColumnName="語言編號Language_ID" />
                 <ScalarProperty Name="電影編號Movie_ID" ColumnName="電影編號Movie_ID" />
                 <ScalarProperty Name="電影代碼Movie_Code" ColumnName="電影代碼Movie_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="優惠總表Coupon">
+            <EntityTypeMapping TypeName="MDAModel.優惠總表Coupon">
+              <MappingFragment StoreEntitySet="優惠總表Coupon">
+                <ScalarProperty Name="優惠所需紅利BonusCost" ColumnName="優惠所需紅利BonusCost" />
+                <ScalarProperty Name="優惠截止日期DueDate" ColumnName="優惠截止日期DueDate" />
+                <ScalarProperty Name="優惠折扣Discount" ColumnName="優惠折扣Discount" />
+                <ScalarProperty Name="優惠代碼Coupon_Code" ColumnName="優惠代碼Coupon_Code" />
+                <ScalarProperty Name="優惠名稱Coupon_Name" ColumnName="優惠名稱Coupon_Name" />
+                <ScalarProperty Name="優惠編號Coupon_ID" ColumnName="優惠編號Coupon_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="會員Members">
+            <EntityTypeMapping TypeName="MDAModel.會員Members">
+              <MappingFragment StoreEntitySet="會員Members">
+                <ScalarProperty Name="會員照片Image" ColumnName="會員照片Image" />
+                <ScalarProperty Name="會員權限Permission" ColumnName="會員權限Permission" />
+                <ScalarProperty Name="正式會員Formal" ColumnName="正式會員Formal" />
+                <ScalarProperty Name="紅利點數Point" ColumnName="紅利點數Point" />
+                <ScalarProperty Name="地址Address" ColumnName="地址Address" />
+                <ScalarProperty Name="電子信箱Email" ColumnName="電子信箱Email" />
+                <ScalarProperty Name="性別Gender" ColumnName="性別Gender" />
+                <ScalarProperty Name="生日BirthDate" ColumnName="生日BirthDate" />
+                <ScalarProperty Name="暱稱NickName" ColumnName="暱稱NickName" />
+                <ScalarProperty Name="名字L_Name" ColumnName="名字L_Name" />
+                <ScalarProperty Name="姓氏F_Name" ColumnName="姓氏F_Name" />
+                <ScalarProperty Name="密碼Password" ColumnName="密碼Password" />
+                <ScalarProperty Name="會員電話Cellphone" ColumnName="會員電話Cellphone" />
+                <ScalarProperty Name="會員編號Members_ID" ColumnName="會員編號Members_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="優惠明細CouponList">
+            <EntityTypeMapping TypeName="MDAModel.優惠明細CouponList">
+              <MappingFragment StoreEntitySet="優惠明細CouponList">
+                <ScalarProperty Name="是否使用OX_CouponUsing" ColumnName="是否使用OX_CouponUsing" />
+                <ScalarProperty Name="優惠編號Coupon_ID" ColumnName="優惠編號Coupon_ID" />
+                <ScalarProperty Name="會員編號Members_ID" ColumnName="會員編號Members_ID" />
+                <ScalarProperty Name="優惠明細編號CouponList_ID" ColumnName="優惠明細編號CouponList_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

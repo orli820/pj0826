@@ -33,5 +33,22 @@ namespace Movie
             viewposter.WindowState = FormWindowState.Maximized;
             viewposter.Show();
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Coupon viewBonus = new Coupon();
+            viewBonus.MdiParent = this;
+            viewBonus.WindowState = FormWindowState.Maximized;
+            viewBonus.Show();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            CouponList viewcplist = new CouponList();
+            viewcplist.MdiParent = this;
+            viewcplist.WindowState = FormWindowState.Maximized;
+            viewcplist.Show();
+        }
     }
-}
+ }
+

@@ -55,6 +55,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Coupon.Designer.cs">
+      <DependentUpon>Coupon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CouponList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CouponList.Designer.cs">
+      <DependentUpon>CouponList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Language.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +80,18 @@
       <DependentUpon>Language.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageToBinary.cs" />
+    <Compile Include="Member.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member.Designer.cs">
+      <DependentUpon>Member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberStation.Designer.cs">
+      <DependentUpon>MemberStation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,11 +113,11 @@
     <Compile Include="Poster.Designer.cs">
       <DependentUpon>Poster.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="PJFormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="PJFormMain.designer.cs">
+      <DependentUpon>PJFormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,7 +127,16 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="優惠明細CouponList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="優惠總表Coupon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="圖片庫MovieImages.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="會員Members.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="電影Movies.cs">
@@ -112,11 +151,26 @@
     <Compile Include="電影語言MovieLanguage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Coupon.resx">
+      <DependentUpon>Coupon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CouponList.resx">
+      <DependentUpon>CouponList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Language.resx">
       <DependentUpon>Language.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="MemberStation.resx">
+      <DependentUpon>MemberStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PJFormMain.resx">
+      <DependentUpon>PJFormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member.resx">
+      <DependentUpon>Member.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Poster.resx">
       <DependentUpon>Poster.cs</DependentUpon>

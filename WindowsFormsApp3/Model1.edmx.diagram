@@ -14,6 +14,10 @@
         <EntityTypeShape EntityType="MDAModel.電影代碼MovieCode" Width="1.5" PointX="3" PointY="6.25" />
         <AssociationConnector Association="MDAModel.FK_電影代碼_Movie_Code_電影_Movies" />
         <AssociationConnector Association="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language" />
+        <EntityTypeShape EntityType="MDAModel.優惠總表Coupon" Width="1.5" PointX="5.375" PointY="1" />
+        <EntityTypeShape EntityType="MDAModel.會員Members" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MDAModel.優惠明細CouponList" Width="1.5" PointX="7.625" PointY="1.125" />
+        <AssociationConnector Association="MDAModel.FK_優惠明細CouponList_優惠總表Coupon" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

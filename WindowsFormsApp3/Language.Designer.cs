@@ -98,6 +98,7 @@ namespace WindowsFormsApp3
             this.labChage.Size = new System.Drawing.Size(102, 38);
             this.labChage.TabIndex = 55;
             this.labChage.Text = "label1";
+           
             // 
             // txtLanguage
             // 
@@ -304,7 +305,7 @@ namespace WindowsFormsApp3
             this.Controls.Add(this.btnLanguageAdd);
             this.Name = "Language";
             this.Text = "Language";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovieLanguage)).EndInit();
+          
             ((System.ComponentModel.ISupportInitialize)(this.dataGridmMovie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridmMovieCode)).EndInit();
             this.ResumeLayout(false);

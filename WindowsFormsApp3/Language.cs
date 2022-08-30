@@ -24,10 +24,10 @@ namespace WindowsFormsApp3
         private void btnLanguageAdd_Click(object sender, EventArgs e)
         {
 
-            if (txtLanguage.Text == "" )
+            if (txtLanguage.Text == "")
                 return;
             var q = (from p in this.db.電影語言MovieLanguage
-                     where p.語言名稱Language_Name == txtLanguage.Text 
+                     where p.語言名稱Language_Name == txtLanguage.Text
                      select p).Any();
             if (q)
             {
@@ -44,7 +44,7 @@ namespace WindowsFormsApp3
         void dataLanguage()
         {
             var p = from r in db.電影語言MovieLanguage
-                    select new { r.語言編號Language_ID,r.語言名稱Language_Name };
+                    select new { r.語言編號Language_ID, r.語言名稱Language_Name };
             var list = p.ToList();
             this.dataGridViewMovieLanguage.DataSource = list;
         }
@@ -54,7 +54,7 @@ namespace WindowsFormsApp3
             var q = (from p in this.db.電影語言MovieLanguage.AsEnumerable()
                      where p.語言編號Language_ID == int.Parse(dataGridViewMovieLanguage.CurrentRow.Cells["語言編號Language_ID"].Value.ToString())
                      select p).FirstOrDefault();
-            q.語言名稱Language_Name = txtLanguage.Text; 
+            q.語言名稱Language_Name = txtLanguage.Text;
             this.db.SaveChanges();
             dataLanguage();
             labChage.Text = "修改成功";
@@ -68,7 +68,7 @@ namespace WindowsFormsApp3
         private void btnViewMovie_Click(object sender, EventArgs e)
         {
             var p = from r in db.電影Movies
-                    select new { r.電影編號Movie_ID,r.中文標題Title_Cht,r.英文標題Title_Eng };
+                    select new { r.電影編號Movie_ID, r.中文標題Title_Cht, r.英文標題Title_Eng };
             var list2 = p.ToList();
             this.dataGridmMovie.DataSource = list2;
         }
@@ -93,16 +93,16 @@ namespace WindowsFormsApp3
             電影代碼MovieCode.語言編號Language_ID = int.Parse(txtLanguageId.Text);
             this.db.電影代碼MovieCode.Add(電影代碼MovieCode);
             this.db.SaveChanges();
-            labMovieCode.Text = "新增成功";            
+            labMovieCode.Text = "新增成功";
             showMovieCodeData();
         }
 
         private void btnUpdateId_Click(object sender, EventArgs e)
         {
-           var q = (from p in this.db.電影代碼MovieCode.AsEnumerable()
+            var q = (from p in this.db.電影代碼MovieCode.AsEnumerable()
                      where p.電影代碼Movie_Code == int.Parse(dataGridmMovieCode.CurrentRow.Cells["電影代碼Movie_Code"].Value.ToString())
                      select p).FirstOrDefault();
-            q.電影編號Movie_ID= int.Parse(txtMovieId.Text);
+            q.電影編號Movie_ID = int.Parse(txtMovieId.Text);
             q.語言編號Language_ID = int.Parse(txtLanguageId.Text);
             this.db.SaveChanges();
             showMovieCodeData();
@@ -124,5 +124,6 @@ namespace WindowsFormsApp3
             txtMovieId.Text = dataGridmMovieCode.CurrentRow.Cells["電影編號Movie_ID"].Value.ToString();
             txtLanguageId.Text = dataGridmMovieCode.CurrentRow.Cells["語言編號Language_ID"].Value.ToString();
         }
-    }
+
+    }   
 }

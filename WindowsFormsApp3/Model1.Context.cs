@@ -30,5 +30,8 @@ namespace WindowsFormsApp3
         public virtual DbSet<電影圖片> 電影圖片 { get; set; }
         public virtual DbSet<電影語言MovieLanguage> 電影語言MovieLanguage { get; set; }
         public virtual DbSet<電影代碼MovieCode> 電影代碼MovieCode { get; set; }
+        public virtual DbSet<優惠總表Coupon> 優惠總表Coupon { get; set; }
+        public virtual DbSet<會員Members> 會員Members { get; set; }
+        public virtual DbSet<優惠明細CouponList> 優惠明細CouponList { get; set; }
     }
 }
