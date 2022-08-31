@@ -17,17 +17,17 @@ namespace WindowsFormsApp3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public 優惠總表Coupon()
         {
-            this.優惠明細CouponList = new HashSet<優惠明細CouponList>();
+            this.優惠明細CouponLists = new HashSet<優惠明細CouponLists>();
         }
     
         public int 優惠編號Coupon_ID { get; set; }
         public string 優惠名稱Coupon_Name { get; set; }
+        public decimal 優惠折扣CouponDiscount { get; set; }
         public string 優惠代碼Coupon_Code { get; set; }
-        public decimal 優惠折扣Discount { get; set; }
-        public System.DateTime 優惠截止日期DueDate { get; set; }
-        public Nullable<int> 優惠所需紅利BonusCost { get; set; }
+        public System.DateTime 優惠截止日期CouponDueDate { get; set; }
+        public int 優惠所需紅利BonusCost { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<優惠明細CouponList> 優惠明細CouponList { get; set; }
+        public virtual ICollection<優惠明細CouponLists> 優惠明細CouponLists { get; set; }
     }
 }

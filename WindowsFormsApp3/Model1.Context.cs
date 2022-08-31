@@ -25,13 +25,13 @@ namespace WindowsFormsApp3
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<圖片庫MovieImages> 圖片庫MovieImages { get; set; }
-        public virtual DbSet<電影Movies> 電影Movies { get; set; }
-        public virtual DbSet<電影圖片> 電影圖片 { get; set; }
-        public virtual DbSet<電影語言MovieLanguage> 電影語言MovieLanguage { get; set; }
-        public virtual DbSet<電影代碼MovieCode> 電影代碼MovieCode { get; set; }
-        public virtual DbSet<優惠總表Coupon> 優惠總表Coupon { get; set; }
         public virtual DbSet<會員Members> 會員Members { get; set; }
-        public virtual DbSet<優惠明細CouponList> 優惠明細CouponList { get; set; }
+        public virtual DbSet<電影Movies> 電影Movies { get; set; }
+        public virtual DbSet<電影代碼MovieCode> 電影代碼MovieCode { get; set; }
+        public virtual DbSet<電影圖片MovieIImagesList> 電影圖片MovieIImagesList { get; set; }
+        public virtual DbSet<電影圖片總表MovieImages> 電影圖片總表MovieImages { get; set; }
+        public virtual DbSet<電影語言MovieLanguage> 電影語言MovieLanguage { get; set; }
+        public virtual DbSet<優惠明細CouponLists> 優惠明細CouponLists { get; set; }
+        public virtual DbSet<優惠總表Coupon> 優惠總表Coupon { get; set; }
     }
 }

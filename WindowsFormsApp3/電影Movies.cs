@@ -17,8 +17,8 @@ namespace WindowsFormsApp3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public 電影Movies()
         {
-            this.電影圖片 = new HashSet<電影圖片>();
             this.電影代碼MovieCode = new HashSet<電影代碼MovieCode>();
+            this.電影圖片MovieIImagesList = new HashSet<電影圖片MovieIImagesList>();
         }
     
         public int 電影編號Movie_ID { get; set; }
@@ -28,14 +28,15 @@ namespace WindowsFormsApp3
         public int 上映年份Release_Year { get; set; }
         public Nullable<System.DateTime> 上映日期Release_Date { get; set; }
         public int 片長Runtime { get; set; }
-        public string 電影分級編號Rating_ID { get; set; }
+        public int 電影分級編號Rating_ID { get; set; }
         public Nullable<decimal> 評分Rate { get; set; }
+        public Nullable<decimal> 期待度anticipation { get; set; }
         public string 票房BoxOffice { get; set; }
         public string 劇情大綱Plot { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<電影圖片> 電影圖片 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<電影代碼MovieCode> 電影代碼MovieCode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<電影圖片MovieIImagesList> 電影圖片MovieIImagesList { get; set; }
     }
 }

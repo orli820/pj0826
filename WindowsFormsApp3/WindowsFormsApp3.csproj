@@ -73,11 +73,12 @@
     <Compile Include="FrmMain.designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Language.cs">
+    <Compile Include="MovieCod.cs" />
+    <Compile Include="MovieLanguage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Language.Designer.cs">
-      <DependentUpon>Language.cs</DependentUpon>
+    <Compile Include="MovieLanguage.Designer.cs">
+      <DependentUpon>MovieLanguage.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageToBinary.cs" />
     <Compile Include="Member.cs">
@@ -107,11 +108,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Poster.cs">
+    <Compile Include="MovieCode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Poster.Designer.cs">
-      <DependentUpon>Poster.cs</DependentUpon>
+    <Compile Include="MovieCode.Designer.cs">
+      <DependentUpon>MovieCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovieIImagesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovieIImagesList.Designer.cs">
+      <DependentUpon>MovieIImagesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewFolder1\Immodel.cs" />
+    <Compile Include="NewFolder1\Mysr.cs" />
+    <Compile Include="MovieImages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovieImages.Designer.cs">
+      <DependentUpon>MovieImages.cs</DependentUpon>
     </Compile>
     <Compile Include="PJFormMain.cs">
       <SubType>Form</SubType>
@@ -127,13 +142,10 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
-    <Compile Include="優惠明細CouponList.cs">
+    <Compile Include="優惠明細CouponLists.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="優惠總表Coupon.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="圖片庫MovieImages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="會員Members.cs">
@@ -145,7 +157,10 @@
     <Compile Include="電影代碼MovieCode.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="電影圖片.cs">
+    <Compile Include="電影圖片MovieIImagesList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="電影圖片總表MovieImages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="電影語言MovieLanguage.cs">
@@ -160,11 +175,17 @@
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Language.resx">
-      <DependentUpon>Language.cs</DependentUpon>
+    <EmbeddedResource Include="MovieCode.resx">
+      <DependentUpon>MovieCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovieLanguage.resx">
+      <DependentUpon>MovieLanguage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberStation.resx">
       <DependentUpon>MemberStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovieIImagesList.resx">
+      <DependentUpon>MovieIImagesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PJFormMain.resx">
       <DependentUpon>PJFormMain.cs</DependentUpon>
@@ -172,8 +193,8 @@
     <EmbeddedResource Include="Member.resx">
       <DependentUpon>Member.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Poster.resx">
-      <DependentUpon>Poster.cs</DependentUpon>
+    <EmbeddedResource Include="MovieImages.resx">
+      <DependentUpon>MovieImages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

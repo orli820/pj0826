@@ -7,19 +7,19 @@
     <Schema Namespace="MDAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="會員Members">
           <Key>
-            <PropertyRef Name="會員編號Members_ID" />
+            <PropertyRef Name="會員編號Member_ID" />
           </Key>
-          <Property Name="會員編號Members_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="會員編號Member_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="會員電話Cellphone" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="密碼Password" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="姓氏F_Name" Type="nvarchar" MaxLength="20" />
-          <Property Name="名字L_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="姓氏F_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="名字L_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="暱稱NickName" Type="nvarchar" MaxLength="50" />
           <Property Name="生日BirthDate" Type="date" />
           <Property Name="性別Gender" Type="int" />
           <Property Name="電子信箱Email" Type="varchar" MaxLength="50" />
           <Property Name="地址Address" Type="nvarchar" MaxLength="50" />
-          <Property Name="紅利點數Point" Type="int" />
+          <Property Name="紅利點數Bonus" Type="int" />
           <Property Name="正式會員Formal" Type="bit" />
           <Property Name="會員權限Permission" Type="bit" />
           <Property Name="會員照片Image" Type="varbinary(max)" />
@@ -35,9 +35,10 @@
           <Property Name="上映年份Release_Year" Type="int" Nullable="false" />
           <Property Name="上映日期Release_Date" Type="date" />
           <Property Name="片長Runtime" Type="int" Nullable="false" />
-          <Property Name="電影分級編號Rating_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="電影分級編號Rating_ID" Type="int" Nullable="false" />
           <Property Name="評分Rate" Type="numeric" Precision="2" Scale="1" />
-          <Property Name="票房BoxOffice" Type="nvarchar" MaxLength="20" />
+          <Property Name="期待度anticipation" Type="numeric" Precision="2" Scale="1" />
+          <Property Name="票房BoxOffice" Type="nvarchar" MaxLength="50" />
           <Property Name="劇情大綱Plot" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="電影代碼MovieCode">
@@ -48,13 +49,20 @@
           <Property Name="電影編號Movie_ID" Type="int" Nullable="false" />
           <Property Name="語言編號Language_ID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="電影圖片">
+        <EntityType Name="電影圖片MovieIImagesList">
           <Key>
             <PropertyRef Name="電影圖片編號MI_ID" />
           </Key>
           <Property Name="電影圖片編號MI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="電影編號Movie_ID" Type="int" Nullable="false" />
-          <Property Name="圖片編號Pictue_ID" Type="int" Nullable="false" />
+          <Property Name="圖片編號Image_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="電影圖片總表MovieImages">
+          <Key>
+            <PropertyRef Name="圖片編號Image_ID" />
+          </Key>
+          <Property Name="圖片編號Image_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="圖片Image" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="電影語言MovieLanguage">
           <Key>
@@ -63,21 +71,14 @@
           <Property Name="語言編號Language_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="語言名稱Language_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="圖片庫MovieImages">
-          <Key>
-            <PropertyRef Name="圖片編號Image_ID" />
-          </Key>
-          <Property Name="圖片編號Image_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="圖片Image" Type="varbinary(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="優惠明細CouponList">
+        <EntityType Name="優惠明細CouponLists">
           <Key>
             <PropertyRef Name="優惠明細編號CouponList_ID" />
           </Key>
           <Property Name="優惠明細編號CouponList_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="會員編號Members_ID" Type="int" Nullable="false" />
+          <Property Name="會員編號Member_ID" Type="int" Nullable="false" />
           <Property Name="優惠編號Coupon_ID" Type="int" Nullable="false" />
-          <Property Name="是否使用OX_CouponUsing" Type="bit" Nullable="false" />
+          <Property Name="是否使用優惠OX_CouponUsing" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="優惠總表Coupon">
           <Key>
@@ -85,10 +86,10 @@
           </Key>
           <Property Name="優惠編號Coupon_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="優惠名稱Coupon_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="優惠折扣CouponDiscount" Type="money" Nullable="false" />
           <Property Name="優惠代碼Coupon_Code" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="優惠折扣Discount" Type="money" Nullable="false" />
-          <Property Name="優惠截止日期DueDate" Type="smalldatetime" Nullable="false" />
-          <Property Name="優惠所需紅利BonusCost" Type="int" />
+          <Property Name="優惠截止日期CouponDueDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="優惠所需紅利BonusCost" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_電影代碼 Movie Code_電影 Movies">
           <End Role="電影Movies" Type="Self.電影Movies" Multiplicity="1" />
@@ -114,38 +115,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_電影圖片_電影Movies">
+        <Association Name="FK_電影圖片MovieIImages_電影Movies">
           <End Role="電影Movies" Type="Self.電影Movies" Multiplicity="1" />
-          <End Role="電影圖片" Type="Self.電影圖片" Multiplicity="*" />
+          <End Role="電影圖片MovieIImagesList" Type="Self.電影圖片MovieIImagesList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="電影Movies">
               <PropertyRef Name="電影編號Movie_ID" />
             </Principal>
-            <Dependent Role="電影圖片">
+            <Dependent Role="電影圖片MovieIImagesList">
               <PropertyRef Name="電影編號Movie_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_電影圖片_圖片庫MovieImages2">
-          <End Role="圖片庫MovieImages" Type="Self.圖片庫MovieImages" Multiplicity="1" />
-          <End Role="電影圖片" Type="Self.電影圖片" Multiplicity="*" />
+        <Association Name="FK_電影圖片MovieIImages_圖片總表Images">
+          <End Role="電影圖片總表MovieImages" Type="Self.電影圖片總表MovieImages" Multiplicity="1" />
+          <End Role="電影圖片MovieIImagesList" Type="Self.電影圖片MovieIImagesList" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="圖片庫MovieImages">
+            <Principal Role="電影圖片總表MovieImages">
               <PropertyRef Name="圖片編號Image_ID" />
             </Principal>
-            <Dependent Role="電影圖片">
-              <PropertyRef Name="圖片編號Pictue_ID" />
+            <Dependent Role="電影圖片MovieIImagesList">
+              <PropertyRef Name="圖片編號Image_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_優惠明細CouponList_優惠總表Coupon">
+        <Association Name="FK_優惠明細BonusLists_會員Members">
+          <End Role="會員Members" Type="Self.會員Members" Multiplicity="1" />
+          <End Role="優惠明細CouponLists" Type="Self.優惠明細CouponLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="會員Members">
+              <PropertyRef Name="會員編號Member_ID" />
+            </Principal>
+            <Dependent Role="優惠明細CouponLists">
+              <PropertyRef Name="會員編號Member_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_優惠明細CouponLists_優惠總表Coupon">
           <End Role="優惠總表Coupon" Type="Self.優惠總表Coupon" Multiplicity="1" />
-          <End Role="優惠明細CouponList" Type="Self.優惠明細CouponList" Multiplicity="*" />
+          <End Role="優惠明細CouponLists" Type="Self.優惠明細CouponLists" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="優惠總表Coupon">
               <PropertyRef Name="優惠編號Coupon_ID" />
             </Principal>
-            <Dependent Role="優惠明細CouponList">
+            <Dependent Role="優惠明細CouponLists">
               <PropertyRef Name="優惠編號Coupon_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -154,10 +167,10 @@
           <EntitySet Name="會員Members" EntityType="Self.會員Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="電影Movies" EntityType="Self.電影Movies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="電影代碼MovieCode" EntityType="Self.電影代碼MovieCode" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="電影圖片" EntityType="Self.電影圖片" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="電影圖片MovieIImagesList" EntityType="Self.電影圖片MovieIImagesList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="電影圖片總表MovieImages" EntityType="Self.電影圖片總表MovieImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="電影語言MovieLanguage" EntityType="Self.電影語言MovieLanguage" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="圖片庫MovieImages" EntityType="Self.圖片庫MovieImages" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="優惠明細CouponList" EntityType="Self.優惠明細CouponList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="優惠明細CouponLists" EntityType="Self.優惠明細CouponLists" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="優惠總表Coupon" EntityType="Self.優惠總表Coupon" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_電影代碼 Movie Code_電影 Movies" Association="Self.FK_電影代碼 Movie Code_電影 Movies">
             <End Role="電影Movies" EntitySet="電影Movies" />
@@ -167,61 +180,81 @@
             <End Role="電影語言MovieLanguage" EntitySet="電影語言MovieLanguage" />
             <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
           </AssociationSet>
-          <AssociationSet Name="FK_電影圖片_電影Movies" Association="Self.FK_電影圖片_電影Movies">
+          <AssociationSet Name="FK_電影圖片MovieIImages_電影Movies" Association="Self.FK_電影圖片MovieIImages_電影Movies">
             <End Role="電影Movies" EntitySet="電影Movies" />
-            <End Role="電影圖片" EntitySet="電影圖片" />
+            <End Role="電影圖片MovieIImagesList" EntitySet="電影圖片MovieIImagesList" />
           </AssociationSet>
-          <AssociationSet Name="FK_電影圖片_圖片庫MovieImages2" Association="Self.FK_電影圖片_圖片庫MovieImages2">
-            <End Role="圖片庫MovieImages" EntitySet="圖片庫MovieImages" />
-            <End Role="電影圖片" EntitySet="電影圖片" />
+          <AssociationSet Name="FK_電影圖片MovieIImages_圖片總表Images" Association="Self.FK_電影圖片MovieIImages_圖片總表Images">
+            <End Role="電影圖片總表MovieImages" EntitySet="電影圖片總表MovieImages" />
+            <End Role="電影圖片MovieIImagesList" EntitySet="電影圖片MovieIImagesList" />
           </AssociationSet>
-          <AssociationSet Name="FK_優惠明細CouponList_優惠總表Coupon" Association="Self.FK_優惠明細CouponList_優惠總表Coupon">
+          <AssociationSet Name="FK_優惠明細BonusLists_會員Members" Association="Self.FK_優惠明細BonusLists_會員Members">
+            <End Role="會員Members" EntitySet="會員Members" />
+            <End Role="優惠明細CouponLists" EntitySet="優惠明細CouponLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_優惠明細CouponLists_優惠總表Coupon" Association="Self.FK_優惠明細CouponLists_優惠總表Coupon">
             <End Role="優惠總表Coupon" EntitySet="優惠總表Coupon" />
-            <End Role="優惠明細CouponList" EntitySet="優惠明細CouponList" />
+            <End Role="優惠明細CouponLists" EntitySet="優惠明細CouponLists" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MDAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="圖片庫MovieImages">
-          <Key>
-            <PropertyRef Name="圖片編號Image_ID" />
-          </Key>
-          <Property Name="圖片編號Image_ID" Type="Int32" Nullable="false" />
-          <Property Name="圖片Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <NavigationProperty Name="電影圖片" Relationship="MDAModel.FK_電影圖片_圖片庫MovieImages2" FromRole="圖片庫MovieImages" ToRole="電影圖片" />
-        </EntityType>
         <EntityContainer Name="MDAEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="圖片庫MovieImages" EntityType="Self.圖片庫MovieImages" />
+          <EntitySet Name="會員Members" EntityType="MDAModel.會員Members" />
           <EntitySet Name="電影Movies" EntityType="MDAModel.電影Movies" />
-          <EntitySet Name="電影圖片" EntityType="MDAModel.電影圖片" />
-          <AssociationSet Name="FK_電影圖片_電影Movies" Association="MDAModel.FK_電影圖片_電影Movies">
-            <End Role="電影Movies" EntitySet="電影Movies" />
-            <End Role="電影圖片" EntitySet="電影圖片" />
-          </AssociationSet>
-          <AssociationSet Name="FK_電影圖片_圖片庫MovieImages2" Association="MDAModel.FK_電影圖片_圖片庫MovieImages2">
-            <End Role="圖片庫MovieImages" EntitySet="圖片庫MovieImages" />
-            <End Role="電影圖片" EntitySet="電影圖片" />
-          </AssociationSet>
-          <EntitySet Name="電影語言MovieLanguage" EntityType="MDAModel.電影語言MovieLanguage" />
           <EntitySet Name="電影代碼MovieCode" EntityType="MDAModel.電影代碼MovieCode" />
+          <EntitySet Name="電影圖片MovieIImagesList" EntityType="MDAModel.電影圖片MovieIImagesList" />
+          <EntitySet Name="電影圖片總表MovieImages" EntityType="MDAModel.電影圖片總表MovieImages" />
+          <EntitySet Name="電影語言MovieLanguage" EntityType="MDAModel.電影語言MovieLanguage" />
+          <EntitySet Name="優惠明細CouponLists" EntityType="MDAModel.優惠明細CouponLists" />
+          <EntitySet Name="優惠總表Coupon" EntityType="MDAModel.優惠總表Coupon" />
+          <AssociationSet Name="FK_優惠明細BonusLists_會員Members" Association="MDAModel.FK_優惠明細BonusLists_會員Members">
+            <End Role="會員Members" EntitySet="會員Members" />
+            <End Role="優惠明細CouponLists" EntitySet="優惠明細CouponLists" />
+          </AssociationSet>
           <AssociationSet Name="FK_電影代碼_Movie_Code_電影_Movies" Association="MDAModel.FK_電影代碼_Movie_Code_電影_Movies">
             <End Role="電影Movies" EntitySet="電影Movies" />
             <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_電影圖片MovieIImages_電影Movies" Association="MDAModel.FK_電影圖片MovieIImages_電影Movies">
+            <End Role="電影Movies" EntitySet="電影Movies" />
+            <End Role="電影圖片MovieIImagesList" EntitySet="電影圖片MovieIImagesList" />
           </AssociationSet>
           <AssociationSet Name="FK_電影代碼_Movie_Code_電影語言_Movie_Language" Association="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language">
             <End Role="電影語言MovieLanguage" EntitySet="電影語言MovieLanguage" />
             <End Role="電影代碼MovieCode" EntitySet="電影代碼MovieCode" />
           </AssociationSet>
-          <EntitySet Name="優惠總表Coupon" EntityType="MDAModel.優惠總表Coupon" />
-          <EntitySet Name="會員Members" EntityType="MDAModel.會員Members" />
-          <EntitySet Name="優惠明細CouponList" EntityType="MDAModel.優惠明細CouponList" />
-          <AssociationSet Name="FK_優惠明細CouponList_優惠總表Coupon" Association="MDAModel.FK_優惠明細CouponList_優惠總表Coupon">
-            <End Role="優惠總表Coupon" EntitySet="優惠總表Coupon" />
-            <End Role="優惠明細CouponList" EntitySet="優惠明細CouponList" />
+          <AssociationSet Name="FK_電影圖片MovieIImages_圖片總表Images" Association="MDAModel.FK_電影圖片MovieIImages_圖片總表Images">
+            <End Role="電影圖片總表MovieImages" EntitySet="電影圖片總表MovieImages" />
+            <End Role="電影圖片MovieIImagesList" EntitySet="電影圖片MovieIImagesList" />
           </AssociationSet>
-          </EntityContainer>
+          <AssociationSet Name="FK_優惠明細BonusLists_優惠總表Bonus" Association="MDAModel.FK_優惠明細BonusLists_優惠總表Bonus">
+            <End Role="優惠總表Coupon" EntitySet="優惠總表Coupon" />
+            <End Role="優惠明細CouponLists" EntitySet="優惠明細CouponLists" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="會員Members">
+          <Key>
+            <PropertyRef Name="會員編號Member_ID" />
+          </Key>
+          <Property Name="會員編號Member_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="會員電話Cellphone" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="密碼Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="姓氏F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="名字L_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="暱稱NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="生日BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="性別Gender" Type="Int32" />
+          <Property Name="電子信箱Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="地址Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="紅利點數Bonus" Type="Int32" />
+          <Property Name="正式會員Formal" Type="Boolean" />
+          <Property Name="會員權限Permission" Type="Boolean" />
+          <Property Name="會員照片Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="優惠明細CouponLists" Relationship="MDAModel.FK_優惠明細BonusLists_會員Members" FromRole="會員Members" ToRole="優惠明細CouponLists" />
+        </EntityType>
         <EntityType Name="電影Movies">
           <Key>
             <PropertyRef Name="電影編號Movie_ID" />
@@ -233,47 +266,42 @@
           <Property Name="上映年份Release_Year" Type="Int32" Nullable="false" />
           <Property Name="上映日期Release_Date" Type="DateTime" Precision="0" />
           <Property Name="片長Runtime" Type="Int32" Nullable="false" />
-          <Property Name="電影分級編號Rating_ID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="電影分級編號Rating_ID" Type="Int32" Nullable="false" />
           <Property Name="評分Rate" Type="Decimal" Precision="2" Scale="1" />
-          <Property Name="票房BoxOffice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="期待度anticipation" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="票房BoxOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="劇情大綱Plot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="電影圖片" Relationship="MDAModel.FK_電影圖片_電影Movies" FromRole="電影Movies" ToRole="電影圖片" />
           <NavigationProperty Name="電影代碼MovieCode" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影_Movies" FromRole="電影Movies" ToRole="電影代碼MovieCode" />
+          <NavigationProperty Name="電影圖片MovieIImagesList" Relationship="MDAModel.FK_電影圖片MovieIImages_電影Movies" FromRole="電影Movies" ToRole="電影圖片MovieIImagesList" />
         </EntityType>
-        <EntityType Name="電影圖片">
+        <EntityType Name="電影代碼MovieCode">
+          <Key>
+            <PropertyRef Name="電影代碼Movie_Code" />
+          </Key>
+          <Property Name="電影代碼Movie_Code" Type="Int32" Nullable="false" />
+          <Property Name="電影編號Movie_ID" Type="Int32" Nullable="false" />
+          <Property Name="語言編號Language_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="電影Movies" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影_Movies" FromRole="電影代碼MovieCode" ToRole="電影Movies" />
+          <NavigationProperty Name="電影語言MovieLanguage" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language" FromRole="電影代碼MovieCode" ToRole="電影語言MovieLanguage" />
+        </EntityType>
+        <EntityType Name="電影圖片MovieIImagesList">
           <Key>
             <PropertyRef Name="電影圖片編號MI_ID" />
           </Key>
-          <Property Name="電影圖片編號MI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="電影圖片編號MI_ID" Type="Int32" Nullable="false" />
           <Property Name="電影編號Movie_ID" Type="Int32" Nullable="false" />
-          <Property Name="圖片編號Pictue_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="電影Movies" Relationship="MDAModel.FK_電影圖片_電影Movies" FromRole="電影圖片" ToRole="電影Movies" />
-          <NavigationProperty Name="圖片庫MovieImages" Relationship="MDAModel.FK_電影圖片_圖片庫MovieImages2" FromRole="電影圖片" ToRole="圖片庫MovieImages" />
+          <Property Name="圖片編號Image_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="電影Movies" Relationship="MDAModel.FK_電影圖片MovieIImages_電影Movies" FromRole="電影圖片MovieIImagesList" ToRole="電影Movies" />
+          <NavigationProperty Name="電影圖片總表MovieImages" Relationship="MDAModel.FK_電影圖片MovieIImages_圖片總表Images" FromRole="電影圖片MovieIImagesList" ToRole="電影圖片總表MovieImages" />
         </EntityType>
-        <Association Name="FK_電影圖片_電影Movies">
-          <End Type="MDAModel.電影Movies" Role="電影Movies" Multiplicity="1" />
-          <End Type="MDAModel.電影圖片" Role="電影圖片" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="電影Movies">
-              <PropertyRef Name="電影編號Movie_ID" />
-            </Principal>
-            <Dependent Role="電影圖片">
-              <PropertyRef Name="電影編號Movie_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_電影圖片_圖片庫MovieImages2">
-          <End Type="MDAModel.圖片庫MovieImages" Role="圖片庫MovieImages" Multiplicity="1" />
-          <End Type="MDAModel.電影圖片" Role="電影圖片" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="圖片庫MovieImages">
-              <PropertyRef Name="圖片編號Image_ID" />
-            </Principal>
-            <Dependent Role="電影圖片">
-              <PropertyRef Name="圖片編號Pictue_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="電影圖片總表MovieImages">
+          <Key>
+            <PropertyRef Name="圖片編號Image_ID" />
+          </Key>
+          <Property Name="圖片編號Image_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="圖片Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="電影圖片MovieIImagesList" Relationship="MDAModel.FK_電影圖片MovieIImages_圖片總表Images" FromRole="電影圖片總表MovieImages" ToRole="電影圖片MovieIImagesList" />
+        </EntityType>
         <EntityType Name="電影語言MovieLanguage">
           <Key>
             <PropertyRef Name="語言編號Language_ID" />
@@ -282,16 +310,41 @@
           <Property Name="語言名稱Language_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="電影代碼MovieCode" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language" FromRole="電影語言MovieLanguage" ToRole="電影代碼MovieCode" />
         </EntityType>
-        <EntityType Name="電影代碼MovieCode">
+        <EntityType Name="優惠明細CouponLists">
           <Key>
-            <PropertyRef Name="電影代碼Movie_Code" />
+            <PropertyRef Name="優惠明細編號CouponList_ID" />
           </Key>
-          <Property Name="電影代碼Movie_Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="電影編號Movie_ID" Type="Int32" Nullable="false" />
-          <Property Name="語言編號Language_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="電影Movies" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影_Movies" FromRole="電影代碼MovieCode" ToRole="電影Movies" />
-          <NavigationProperty Name="電影語言MovieLanguage" Relationship="MDAModel.FK_電影代碼_Movie_Code_電影語言_Movie_Language" FromRole="電影代碼MovieCode" ToRole="電影語言MovieLanguage" />
+          <Property Name="優惠明細編號CouponList_ID" Type="Int32" Nullable="false" />
+          <Property Name="會員編號Member_ID" Type="Int32" Nullable="false" />
+          <Property Name="優惠編號Coupon_ID" Type="Int32" Nullable="false" />
+          <Property Name="是否使用優惠OX_CouponUsing" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="會員Members" Relationship="MDAModel.FK_優惠明細BonusLists_會員Members" FromRole="優惠明細CouponLists" ToRole="會員Members" />
+          <NavigationProperty Name="優惠總表Coupon" Relationship="MDAModel.FK_優惠明細BonusLists_優惠總表Bonus" FromRole="優惠明細CouponLists" ToRole="優惠總表Coupon" />
         </EntityType>
+        <EntityType Name="優惠總表Coupon">
+          <Key>
+            <PropertyRef Name="優惠編號Coupon_ID" />
+          </Key>
+          <Property Name="優惠編號Coupon_ID" Type="Int32" Nullable="false" />
+          <Property Name="優惠名稱Coupon_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="優惠折扣CouponDiscount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="優惠代碼Coupon_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="優惠截止日期CouponDueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="優惠所需紅利BonusCost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="優惠明細CouponLists" Relationship="MDAModel.FK_優惠明細BonusLists_優惠總表Bonus" FromRole="優惠總表Coupon" ToRole="優惠明細CouponLists" />
+        </EntityType>
+        <Association Name="FK_優惠明細BonusLists_會員Members">
+          <End Type="MDAModel.會員Members" Role="會員Members" Multiplicity="1" />
+          <End Type="MDAModel.優惠明細CouponLists" Role="優惠明細CouponLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="會員Members">
+              <PropertyRef Name="會員編號Member_ID" />
+            </Principal>
+            <Dependent Role="優惠明細CouponLists">
+              <PropertyRef Name="會員編號Member_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_電影代碼_Movie_Code_電影_Movies">
           <End Type="MDAModel.電影Movies" Role="電影Movies" Multiplicity="1" />
           <End Type="MDAModel.電影代碼MovieCode" Role="電影代碼MovieCode" Multiplicity="*" />
@@ -300,6 +353,18 @@
               <PropertyRef Name="電影編號Movie_ID" />
             </Principal>
             <Dependent Role="電影代碼MovieCode">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_電影圖片MovieIImages_電影Movies">
+          <End Type="MDAModel.電影Movies" Role="電影Movies" Multiplicity="1" />
+          <End Type="MDAModel.電影圖片MovieIImagesList" Role="電影圖片MovieIImagesList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="電影Movies">
+              <PropertyRef Name="電影編號Movie_ID" />
+            </Principal>
+            <Dependent Role="電影圖片MovieIImagesList">
               <PropertyRef Name="電影編號Movie_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -316,55 +381,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="優惠總表Coupon">
-          <Key>
-            <PropertyRef Name="優惠編號Coupon_ID" />
-          </Key>
-          <Property Name="優惠編號Coupon_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="優惠名稱Coupon_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="優惠代碼Coupon_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="優惠折扣Discount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="優惠截止日期DueDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="優惠所需紅利BonusCost" Type="Int32" />
-          <NavigationProperty Name="優惠明細CouponList" Relationship="MDAModel.FK_優惠明細CouponList_優惠總表Coupon" FromRole="優惠總表Coupon" ToRole="優惠明細CouponList" />
-          </EntityType>
-        <EntityType Name="會員Members">
-          <Key>
-            <PropertyRef Name="會員編號Members_ID" />
-          </Key>
-          <Property Name="會員編號Members_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="會員電話Cellphone" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="密碼Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="姓氏F_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="名字L_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="暱稱NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="生日BirthDate" Type="DateTime" Precision="0" />
-          <Property Name="性別Gender" Type="Int32" />
-          <Property Name="電子信箱Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="地址Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="紅利點數Point" Type="Int32" />
-          <Property Name="正式會員Formal" Type="Boolean" />
-          <Property Name="會員權限Permission" Type="Boolean" />
-          <Property Name="會員照片Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="優惠明細CouponList">
-          <Key>
-            <PropertyRef Name="優惠明細編號CouponList_ID" />
-          </Key>
-          <Property Name="優惠明細編號CouponList_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="會員編號Members_ID" Type="Int32" Nullable="false" />
-          <Property Name="優惠編號Coupon_ID" Type="Int32" Nullable="false" />
-          <Property Name="是否使用OX_CouponUsing" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="優惠總表Coupon" Relationship="MDAModel.FK_優惠明細CouponList_優惠總表Coupon" FromRole="優惠明細CouponList" ToRole="優惠總表Coupon" />
-        </EntityType>
-        <Association Name="FK_優惠明細CouponList_優惠總表Coupon">
+        <Association Name="FK_電影圖片MovieIImages_圖片總表Images">
+          <End Type="MDAModel.電影圖片總表MovieImages" Role="電影圖片總表MovieImages" Multiplicity="1" />
+          <End Type="MDAModel.電影圖片MovieIImagesList" Role="電影圖片MovieIImagesList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="電影圖片總表MovieImages">
+              <PropertyRef Name="圖片編號Image_ID" />
+            </Principal>
+            <Dependent Role="電影圖片MovieIImagesList">
+              <PropertyRef Name="圖片編號Image_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_優惠明細BonusLists_優惠總表Bonus">
           <End Type="MDAModel.優惠總表Coupon" Role="優惠總表Coupon" Multiplicity="1" />
-          <End Type="MDAModel.優惠明細CouponList" Role="優惠明細CouponList" Multiplicity="*" />
+          <End Type="MDAModel.優惠明細CouponLists" Role="優惠明細CouponLists" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="優惠總表Coupon">
               <PropertyRef Name="優惠編號Coupon_ID" />
             </Principal>
-            <Dependent Role="優惠明細CouponList">
+            <Dependent Role="優惠明細CouponLists">
               <PropertyRef Name="優惠編號Coupon_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -375,11 +411,23 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MDAModelStoreContainer" CdmEntityContainer="MDAEntities2">
-          <EntitySetMapping Name="圖片庫MovieImages">
-            <EntityTypeMapping TypeName="MDAModel.圖片庫MovieImages">
-              <MappingFragment StoreEntitySet="圖片庫MovieImages">
-                <ScalarProperty Name="圖片編號Image_ID" ColumnName="圖片編號Image_ID" />
-                <ScalarProperty Name="圖片Image" ColumnName="圖片Image" />
+          <EntitySetMapping Name="會員Members">
+            <EntityTypeMapping TypeName="MDAModel.會員Members">
+              <MappingFragment StoreEntitySet="會員Members">
+                <ScalarProperty Name="會員照片Image" ColumnName="會員照片Image" />
+                <ScalarProperty Name="會員權限Permission" ColumnName="會員權限Permission" />
+                <ScalarProperty Name="正式會員Formal" ColumnName="正式會員Formal" />
+                <ScalarProperty Name="紅利點數Bonus" ColumnName="紅利點數Bonus" />
+                <ScalarProperty Name="地址Address" ColumnName="地址Address" />
+                <ScalarProperty Name="電子信箱Email" ColumnName="電子信箱Email" />
+                <ScalarProperty Name="性別Gender" ColumnName="性別Gender" />
+                <ScalarProperty Name="生日BirthDate" ColumnName="生日BirthDate" />
+                <ScalarProperty Name="暱稱NickName" ColumnName="暱稱NickName" />
+                <ScalarProperty Name="名字L_Name" ColumnName="名字L_Name" />
+                <ScalarProperty Name="姓氏F_Name" ColumnName="姓氏F_Name" />
+                <ScalarProperty Name="密碼Password" ColumnName="密碼Password" />
+                <ScalarProperty Name="會員電話Cellphone" ColumnName="會員電話Cellphone" />
+                <ScalarProperty Name="會員編號Member_ID" ColumnName="會員編號Member_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -388,6 +436,7 @@
               <MappingFragment StoreEntitySet="電影Movies">
                 <ScalarProperty Name="劇情大綱Plot" ColumnName="劇情大綱Plot" />
                 <ScalarProperty Name="票房BoxOffice" ColumnName="票房BoxOffice" />
+                <ScalarProperty Name="期待度anticipation" ColumnName="期待度anticipation" />
                 <ScalarProperty Name="評分Rate" ColumnName="評分Rate" />
                 <ScalarProperty Name="電影分級編號Rating_ID" ColumnName="電影分級編號Rating_ID" />
                 <ScalarProperty Name="片長Runtime" ColumnName="片長Runtime" />
@@ -400,12 +449,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="電影圖片">
-            <EntityTypeMapping TypeName="MDAModel.電影圖片">
-              <MappingFragment StoreEntitySet="電影圖片">
-                <ScalarProperty Name="圖片編號Pictue_ID" ColumnName="圖片編號Pictue_ID" />
+          <EntitySetMapping Name="電影代碼MovieCode">
+            <EntityTypeMapping TypeName="MDAModel.電影代碼MovieCode">
+              <MappingFragment StoreEntitySet="電影代碼MovieCode">
+                <ScalarProperty Name="語言編號Language_ID" ColumnName="語言編號Language_ID" />
+                <ScalarProperty Name="電影編號Movie_ID" ColumnName="電影編號Movie_ID" />
+                <ScalarProperty Name="電影代碼Movie_Code" ColumnName="電影代碼Movie_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="電影圖片MovieIImagesList">
+            <EntityTypeMapping TypeName="MDAModel.電影圖片MovieIImagesList">
+              <MappingFragment StoreEntitySet="電影圖片MovieIImagesList">
+                <ScalarProperty Name="圖片編號Image_ID" ColumnName="圖片編號Image_ID" />
                 <ScalarProperty Name="電影編號Movie_ID" ColumnName="電影編號Movie_ID" />
                 <ScalarProperty Name="電影圖片編號MI_ID" ColumnName="電影圖片編號MI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="電影圖片總表MovieImages">
+            <EntityTypeMapping TypeName="MDAModel.電影圖片總表MovieImages">
+              <MappingFragment StoreEntitySet="電影圖片總表MovieImages">
+                <ScalarProperty Name="圖片Image" ColumnName="圖片Image" />
+                <ScalarProperty Name="圖片編號Image_ID" ColumnName="圖片編號Image_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -417,12 +483,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="電影代碼MovieCode">
-            <EntityTypeMapping TypeName="MDAModel.電影代碼MovieCode">
-              <MappingFragment StoreEntitySet="電影代碼MovieCode">
-                <ScalarProperty Name="語言編號Language_ID" ColumnName="語言編號Language_ID" />
-                <ScalarProperty Name="電影編號Movie_ID" ColumnName="電影編號Movie_ID" />
-                <ScalarProperty Name="電影代碼Movie_Code" ColumnName="電影代碼Movie_Code" />
+          <EntitySetMapping Name="優惠明細CouponLists">
+            <EntityTypeMapping TypeName="MDAModel.優惠明細CouponLists">
+              <MappingFragment StoreEntitySet="優惠明細CouponLists">
+                <ScalarProperty Name="是否使用優惠OX_CouponUsing" ColumnName="是否使用優惠OX_CouponUsing" />
+                <ScalarProperty Name="優惠編號Coupon_ID" ColumnName="優惠編號Coupon_ID" />
+                <ScalarProperty Name="會員編號Member_ID" ColumnName="會員編號Member_ID" />
+                <ScalarProperty Name="優惠明細編號CouponList_ID" ColumnName="優惠明細編號CouponList_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -430,41 +497,11 @@
             <EntityTypeMapping TypeName="MDAModel.優惠總表Coupon">
               <MappingFragment StoreEntitySet="優惠總表Coupon">
                 <ScalarProperty Name="優惠所需紅利BonusCost" ColumnName="優惠所需紅利BonusCost" />
-                <ScalarProperty Name="優惠截止日期DueDate" ColumnName="優惠截止日期DueDate" />
-                <ScalarProperty Name="優惠折扣Discount" ColumnName="優惠折扣Discount" />
+                <ScalarProperty Name="優惠截止日期CouponDueDate" ColumnName="優惠截止日期CouponDueDate" />
                 <ScalarProperty Name="優惠代碼Coupon_Code" ColumnName="優惠代碼Coupon_Code" />
+                <ScalarProperty Name="優惠折扣CouponDiscount" ColumnName="優惠折扣CouponDiscount" />
                 <ScalarProperty Name="優惠名稱Coupon_Name" ColumnName="優惠名稱Coupon_Name" />
                 <ScalarProperty Name="優惠編號Coupon_ID" ColumnName="優惠編號Coupon_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="會員Members">
-            <EntityTypeMapping TypeName="MDAModel.會員Members">
-              <MappingFragment StoreEntitySet="會員Members">
-                <ScalarProperty Name="會員照片Image" ColumnName="會員照片Image" />
-                <ScalarProperty Name="會員權限Permission" ColumnName="會員權限Permission" />
-                <ScalarProperty Name="正式會員Formal" ColumnName="正式會員Formal" />
-                <ScalarProperty Name="紅利點數Point" ColumnName="紅利點數Point" />
-                <ScalarProperty Name="地址Address" ColumnName="地址Address" />
-                <ScalarProperty Name="電子信箱Email" ColumnName="電子信箱Email" />
-                <ScalarProperty Name="性別Gender" ColumnName="性別Gender" />
-                <ScalarProperty Name="生日BirthDate" ColumnName="生日BirthDate" />
-                <ScalarProperty Name="暱稱NickName" ColumnName="暱稱NickName" />
-                <ScalarProperty Name="名字L_Name" ColumnName="名字L_Name" />
-                <ScalarProperty Name="姓氏F_Name" ColumnName="姓氏F_Name" />
-                <ScalarProperty Name="密碼Password" ColumnName="密碼Password" />
-                <ScalarProperty Name="會員電話Cellphone" ColumnName="會員電話Cellphone" />
-                <ScalarProperty Name="會員編號Members_ID" ColumnName="會員編號Members_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="優惠明細CouponList">
-            <EntityTypeMapping TypeName="MDAModel.優惠明細CouponList">
-              <MappingFragment StoreEntitySet="優惠明細CouponList">
-                <ScalarProperty Name="是否使用OX_CouponUsing" ColumnName="是否使用OX_CouponUsing" />
-                <ScalarProperty Name="優惠編號Coupon_ID" ColumnName="優惠編號Coupon_ID" />
-                <ScalarProperty Name="會員編號Members_ID" ColumnName="會員編號Members_ID" />
-                <ScalarProperty Name="優惠明細編號CouponList_ID" ColumnName="優惠明細編號CouponList_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

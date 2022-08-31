@@ -24,7 +24,7 @@ namespace WindowsFormsApp3
         void showBonus()
         {
             var q = from a in db.優惠總表Coupon
-                    select new { a.優惠編號Coupon_ID, a.優惠名稱Coupon_Name, a.優惠代碼Coupon_Code, a.優惠折扣Discount ,a.優惠截止日期DueDate,a.優惠所需紅利BonusCost };
+                    select new { a.優惠編號Coupon_ID, a.優惠名稱Coupon_Name, a.優惠代碼Coupon_Code, a.優惠折扣CouponDiscount ,a.優惠截止日期CouponDueDate,a.優惠所需紅利BonusCost };
             dataGridViewCoupon.DataSource = q.ToList();
         }
 
@@ -47,8 +47,8 @@ namespace WindowsFormsApp3
             }
             優惠總表Coupon.優惠名稱Coupon_Name = txtBonusName.Text;
             優惠總表Coupon.優惠代碼Coupon_Code = txtCouponCode.Text;
-            優惠總表Coupon.優惠折扣Discount = decimal.Parse(txtDiscount.Text);
-            優惠總表Coupon.優惠截止日期DueDate =Convert.ToDateTime(txtDueday.Text);
+            優惠總表Coupon.優惠折扣CouponDiscount = decimal.Parse(txtDiscount.Text);
+            優惠總表Coupon.優惠截止日期CouponDueDate =Convert.ToDateTime(txtDueday.Text);
             優惠總表Coupon.優惠所需紅利BonusCost = int.Parse(txtPoint.Text);
 
             this.db.優惠總表Coupon.Add(優惠總表Coupon);
@@ -74,8 +74,8 @@ namespace WindowsFormsApp3
                      select p).FirstOrDefault();
             q.優惠名稱Coupon_Name = txtBonusName.Text;
             q.優惠代碼Coupon_Code = txtCouponCode.Text;
-            q.優惠折扣Discount = decimal.Parse(txtDiscount.Text);
-            q.優惠截止日期DueDate = Convert.ToDateTime(txtDueday.Text);
+            q.優惠折扣CouponDiscount = decimal.Parse(txtDiscount.Text);
+            q.優惠截止日期CouponDueDate = Convert.ToDateTime(txtDueday.Text);
             q.優惠所需紅利BonusCost = int.Parse(txtPoint.Text);
             this.db.SaveChanges();
             showBonus();
@@ -87,8 +87,8 @@ namespace WindowsFormsApp3
         {
             txtBonusName.Text = dataGridViewCoupon.CurrentRow.Cells["優惠名稱Coupon_Name"].Value.ToString();
             txtCouponCode.Text= dataGridViewCoupon.CurrentRow.Cells["優惠代碼Coupon_Code"].Value.ToString();
-            txtDiscount.Text =Convert.ToInt32 (dataGridViewCoupon.CurrentRow.Cells["優惠折扣Discount"].Value).ToString();
-            txtDueday.Text =Convert.ToDateTime(dataGridViewCoupon.CurrentRow.Cells["優惠截止日期DueDate"].Value).ToString("yyyy/MM/dd");
+            txtDiscount.Text =Convert.ToInt32 (dataGridViewCoupon.CurrentRow.Cells["優惠折扣CouponDiscount"].Value).ToString();
+            txtDueday.Text =Convert.ToDateTime(dataGridViewCoupon.CurrentRow.Cells["優惠截止日期CouponDueDate"].Value).ToString("yyyy/MM/dd");
 
             txtPoint.Text = dataGridViewCoupon.CurrentRow.Cells["優惠所需紅利BonusCost"].Value.ToString();
         }

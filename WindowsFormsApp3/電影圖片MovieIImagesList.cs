@@ -12,13 +12,13 @@ namespace WindowsFormsApp3
     using System;
     using System.Collections.Generic;
     
-    public partial class 優惠明細CouponList
+    public partial class 電影圖片MovieIImagesList
     {
-        public int 優惠明細編號CouponList_ID { get; set; }
-        public int 會員編號Members_ID { get; set; }
-        public int 優惠編號Coupon_ID { get; set; }
-        public bool 是否使用OX_CouponUsing { get; set; }
+        public int 電影圖片編號MI_ID { get; set; }
+        public int 電影編號Movie_ID { get; set; }
+        public int 圖片編號Image_ID { get; set; }
     
-        public virtual 優惠總表Coupon 優惠總表Coupon { get; set; }
+        public virtual 電影Movies 電影Movies { get; set; }
+        public virtual 電影圖片總表MovieImages 電影圖片總表MovieImages { get; set; }
     }
 }

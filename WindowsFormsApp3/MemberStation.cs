@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.NewFolder1;
 
 namespace WindowsFormsApp3
 {
     public partial class MemberStation : Form
     {
+        
         public MemberStation()
         {
             InitializeComponent();
-            this.splitContainer1.BackColor = Color.Black;
+            toolStrip1.Renderer = new Mysr();
+            toolStrip2.Renderer = new Mysr();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

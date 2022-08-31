@@ -18,26 +18,22 @@ namespace WindowsFormsApp3
         }
         優惠總表Coupon 優惠總表Coupon = new 優惠總表Coupon();
         MDAEntities2 db = new MDAEntities2();
-        優惠明細CouponList 優惠明細CouponList = new 優惠明細CouponList();
+        優惠明細CouponLists 優惠明細CouponLists = new 優惠明細CouponLists();
         會員Members 會員Members = new 會員Members();
-        private void btnviewBonus_Click(object sender, EventArgs e)
+       
+        void viewcoupon()
         {
             var q = from a in db.優惠總表Coupon
-                    select new { a.優惠編號Coupon_ID, a.優惠名稱Coupon_Name, a.優惠代碼Coupon_Code, a.優惠折扣Discount, a.優惠截止日期DueDate, a.優惠所需紅利BonusCost };
+                    select new { a.優惠編號Coupon_ID, a.優惠名稱Coupon_Name, a.優惠代碼Coupon_Code, a.優惠折扣CouponDiscount, a.優惠截止日期CouponDueDate, a.優惠所需紅利BonusCost };
             dataGridViewCoupon.DataSource = q.ToList();
         }
-
-        private void btnViewMember_Click(object sender, EventArgs e)
+        void viewmember()
         {
             var q = from a in db.會員Members
-                    select new { a.會員編號Members_ID, a.紅利點數Point };
+                    select new { a.會員編號Member_ID, a.紅利點數Bonus };
             dataGridViewMember.DataSource = q.ToList();
         }
-
-        private void btnviewcplist_Click(object sender, EventArgs e)
-        {
-            showviewcplist();
-        }
+       
 
         private void dataGridViewCoupon_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -46,7 +42,7 @@ namespace WindowsFormsApp3
 
         private void dataGridViewMember_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txtmemberid.Text = dataGridViewMember.CurrentRow.Cells["會員編號Members_ID"].Value.ToString();
+            txtmemberid.Text = dataGridViewMember.CurrentRow.Cells["會員編號Member_ID"].Value.ToString();
         }
 
         private void btnLanguageAdd_Click(object sender, EventArgs e)
@@ -54,11 +50,11 @@ namespace WindowsFormsApp3
             if (txtCoupon_ID .Text== "")
                 return;
 
-            優惠明細CouponList.會員編號Members_ID = int.Parse(txtmemberid.Text);
-            優惠明細CouponList.優惠編號Coupon_ID = int.Parse(txtCoupon_ID.Text);
+            優惠明細CouponLists.會員編號Member_ID = int.Parse(txtmemberid.Text);
+            優惠明細CouponLists.優惠編號Coupon_ID = int.Parse(txtCoupon_ID.Text);
             string result = comboBox1.Text;
-            優惠明細CouponList.是否使用OX_CouponUsing =Convert.ToBoolean (result);
-            this.db.優惠明細CouponList.Add(優惠明細CouponList);
+            優惠明細CouponLists.是否使用優惠OX_CouponUsing =Convert.ToBoolean (result);
+            this.db.優惠明細CouponLists.Add(優惠明細CouponLists);
             this.db.SaveChanges();
             labChage.Text = "新增成功";
             showviewcplist();
@@ -68,8 +64,8 @@ namespace WindowsFormsApp3
 
         void showviewcplist()
         {
-            var q = from a in db.優惠明細CouponList
-                    select new { a.優惠明細編號CouponList_ID, a.會員編號Members_ID, a.優惠編號Coupon_ID, a.是否使用OX_CouponUsing };
+            var q = from a in db.優惠明細CouponLists
+                    select new { a.優惠明細編號CouponList_ID, a.會員編號Member_ID, a.優惠編號Coupon_ID, a.是否使用優惠OX_CouponUsing };
             dataGridViewcplist.DataSource = q.ToList();
         }
 
@@ -82,12 +78,12 @@ namespace WindowsFormsApp3
 
         private void btnLanguageUpDate_Click(object sender, EventArgs e)
         {
-            var q = (from a in db.優惠明細CouponList.AsEnumerable()
+            var q = (from a in db.優惠明細CouponLists.AsEnumerable()
                      where a.優惠明細編號CouponList_ID == int.Parse(dataGridViewcplist.CurrentRow.Cells["優惠明細編號CouponList_ID"].Value.ToString())
                      select a).FirstOrDefault();
-            q.會員編號Members_ID = int.Parse(txtmemberid.Text);
+            q.會員編號Member_ID = int.Parse(txtmemberid.Text);
             q.優惠編號Coupon_ID = int.Parse(txtCoupon_ID.Text);
-            q.是否使用OX_CouponUsing = Convert.ToBoolean(comboBox1.Text.ToString());
+            q.是否使用優惠OX_CouponUsing = Convert.ToBoolean(comboBox1.Text.ToString());
             this.db.SaveChanges();
             labChage.Text = "修改成功";
             showviewcplist();
@@ -97,9 +93,16 @@ namespace WindowsFormsApp3
 
         private void dataGridViewcplist_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txtmemberid.Text = dataGridViewcplist.CurrentRow.Cells["會員編號Members_ID"].Value.ToString();
+            txtmemberid.Text = dataGridViewcplist.CurrentRow.Cells["會員編號Member_ID"].Value.ToString();
             txtCoupon_ID.Text = dataGridViewcplist.CurrentRow.Cells["優惠編號Coupon_ID"].Value.ToString();
-            comboBox1.Text = dataGridViewcplist.CurrentRow.Cells["是否使用OX_CouponUsing"].Value.ToString();
+            comboBox1.Text = dataGridViewcplist.CurrentRow.Cells["是否使用優惠OX_CouponUsing"].Value.ToString();
+        }
+
+        private void btnviewBonus_Click_1(object sender, EventArgs e)
+        {
+            showviewcplist();
+            viewcoupon();
+            viewmember();
         }
     }
 }

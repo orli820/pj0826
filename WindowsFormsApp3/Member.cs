@@ -65,10 +65,10 @@ namespace WindowsFormsApp3
                 sql += "名字L_Name,";
                 sql += "暱稱Nickname,";
                 //sql += "生日BirthDate,";
-                sql += "性別Gender,";
+                //sql += "性別Gender,";
                 sql += "電子信箱EMail,";  //要新增欄位加這倒數第二
                 sql += "地址Address,";
-                sql += "紅利點數Point,";
+                sql += "紅利點數Bonus,";
                 sql += "正式會員Formal,";
                 sql += "會員權限Permission";
                 //sql += "會員照片Image";
@@ -79,7 +79,7 @@ namespace WindowsFormsApp3
                 sql += "'" + lname + "',";
                 sql += "'0',";
                 //sql += "'0',";
-                sql += "'0',";
+                //sql += "'0',";
                 sql += "'" + email + "',";
                 sql += "'" + place[rnd.Next(0, place.Length)] + "',";
                 sql += "'0',";
@@ -91,12 +91,6 @@ namespace WindowsFormsApp3
                 cmd.CommandText =sql ;
               cmd.ExecuteNonQuery();
             }
-           
-            
-            
-          
-
-
             con.Close();
         }
         

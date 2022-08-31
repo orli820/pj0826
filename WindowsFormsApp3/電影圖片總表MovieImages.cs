@@ -12,18 +12,18 @@ namespace WindowsFormsApp3
     using System;
     using System.Collections.Generic;
     
-    public partial class 圖片庫MovieImages
+    public partial class 電影圖片總表MovieImages
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public 圖片庫MovieImages()
+        public 電影圖片總表MovieImages()
         {
-            this.電影圖片 = new HashSet<電影圖片>();
+            this.電影圖片MovieIImagesList = new HashSet<電影圖片MovieIImagesList>();
         }
     
         public int 圖片編號Image_ID { get; set; }
         public byte[] 圖片Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<電影圖片> 電影圖片 { get; set; }
+        public virtual ICollection<電影圖片MovieIImagesList> 電影圖片MovieIImagesList { get; set; }
     }
 }
