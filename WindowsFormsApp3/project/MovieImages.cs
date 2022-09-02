@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.DataBase;
 
 namespace WindowsFormsApp3
 {
@@ -95,11 +96,31 @@ namespace WindowsFormsApp3
 
         private void dataGridViewMovieImage_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
+            showpic();
+            
+        }
+
+      void showpic()
+        {
             byte[] ByteData = (byte[])dataGridViewMovieImage.CurrentRow.Cells["圖片Image"].Value;
             MemoryStream ms = new MemoryStream(ByteData);
             ptbshow.Image = Image.FromStream(ms);
             ms.Close();
         }
+
+        private void btnsearch_Click(object sender, EventArgs e)
+        {
+            if (txtkeyword.Text == "")
+            { return; }
+            var q = from p in this.db.電影圖片總表MovieImages.AsEnumerable()
+                    where int.Parse(txtkeyword.Text) ==p.圖片編號Image_ID
+                    select new { p.圖片編號Image_ID, p.圖片Image };
+            dataGridViewMovieImage.DataSource = q.ToList();
+            showpic();
+
+
+        }
+        
     }
        
 }

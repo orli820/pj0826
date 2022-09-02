@@ -46,6 +46,8 @@ namespace WindowsFormsApp3
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtmoviechi = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovieImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovieImage)).BeginInit();
@@ -56,11 +58,11 @@ namespace WindowsFormsApp3
             // dataGridViewMovieImageList
             // 
             this.dataGridViewMovieImageList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMovieImageList.Location = new System.Drawing.Point(803, 125);
+            this.dataGridViewMovieImageList.Location = new System.Drawing.Point(321, 301);
             this.dataGridViewMovieImageList.Name = "dataGridViewMovieImageList";
             this.dataGridViewMovieImageList.RowHeadersWidth = 51;
             this.dataGridViewMovieImageList.RowTemplate.Height = 27;
-            this.dataGridViewMovieImageList.Size = new System.Drawing.Size(438, 798);
+            this.dataGridViewMovieImageList.Size = new System.Drawing.Size(438, 611);
             this.dataGridViewMovieImageList.TabIndex = 62;
             this.dataGridViewMovieImageList.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewMovieImageList_CellMouseUp);
             // 
@@ -115,10 +117,10 @@ namespace WindowsFormsApp3
             // txtMovieId
             // 
             this.txtMovieId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMovieId.Location = new System.Drawing.Point(530, 116);
+            this.txtMovieId.Location = new System.Drawing.Point(538, 154);
             this.txtMovieId.Margin = new System.Windows.Forms.Padding(4);
             this.txtMovieId.Name = "txtMovieId";
-            this.txtMovieId.Size = new System.Drawing.Size(162, 34);
+            this.txtMovieId.Size = new System.Drawing.Size(221, 34);
             this.txtMovieId.TabIndex = 54;
             // 
             // label5
@@ -127,7 +129,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(355, 185);
+            this.label5.Location = new System.Drawing.Point(363, 223);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(152, 25);
@@ -137,10 +139,10 @@ namespace WindowsFormsApp3
             // txtImageId
             // 
             this.txtImageId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtImageId.Location = new System.Drawing.Point(530, 176);
+            this.txtImageId.Location = new System.Drawing.Point(538, 214);
             this.txtImageId.Margin = new System.Windows.Forms.Padding(4);
             this.txtImageId.Name = "txtImageId";
-            this.txtImageId.Size = new System.Drawing.Size(162, 34);
+            this.txtImageId.Size = new System.Drawing.Size(221, 34);
             this.txtImageId.TabIndex = 55;
             // 
             // label6
@@ -149,7 +151,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(324, 125);
+            this.label6.Location = new System.Drawing.Point(332, 163);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(183, 25);
@@ -169,18 +171,18 @@ namespace WindowsFormsApp3
             // dataGridViewMovie
             // 
             this.dataGridViewMovie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMovie.Location = new System.Drawing.Point(360, 301);
+            this.dataGridViewMovie.Location = new System.Drawing.Point(817, 125);
             this.dataGridViewMovie.Name = "dataGridViewMovie";
             this.dataGridViewMovie.RowHeadersWidth = 51;
             this.dataGridViewMovie.RowTemplate.Height = 27;
-            this.dataGridViewMovie.Size = new System.Drawing.Size(375, 622);
+            this.dataGridViewMovie.Size = new System.Drawing.Size(540, 787);
             this.dataGridViewMovie.TabIndex = 69;
             this.dataGridViewMovie.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewMovie_CellMouseUp);
             // 
             // dataGridViewMovieImage
             // 
             this.dataGridViewMovieImage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMovieImage.Location = new System.Drawing.Point(1369, 125);
+            this.dataGridViewMovieImage.Location = new System.Drawing.Point(1425, 125);
             this.dataGridViewMovieImage.Name = "dataGridViewMovieImage";
             this.dataGridViewMovieImage.RowHeadersWidth = 51;
             this.dataGridViewMovieImage.RowTemplate.Height = 27;
@@ -191,7 +193,7 @@ namespace WindowsFormsApp3
             // ptbshow
             // 
             this.ptbshow.BackColor = System.Drawing.Color.White;
-            this.ptbshow.Location = new System.Drawing.Point(1369, 492);
+            this.ptbshow.Location = new System.Drawing.Point(1425, 492);
             this.ptbshow.Margin = new System.Windows.Forms.Padding(4);
             this.ptbshow.Name = "ptbshow";
             this.ptbshow.Size = new System.Drawing.Size(484, 420);
@@ -216,7 +218,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(355, 273);
+            this.label2.Location = new System.Drawing.Point(310, 273);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(261, 25);
@@ -229,7 +231,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(798, 94);
+            this.label3.Location = new System.Drawing.Point(812, 94);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 25);
@@ -242,18 +244,43 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(1364, 94);
+            this.label4.Location = new System.Drawing.Point(1420, 94);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(262, 25);
             this.label4.TabIndex = 73;
             this.label4.Text = "電影圖片總表MovieImages";
             // 
+            // txtmoviechi
+            // 
+            this.txtmoviechi.Enabled = false;
+            this.txtmoviechi.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtmoviechi.Location = new System.Drawing.Point(538, 94);
+            this.txtmoviechi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtmoviechi.Name = "txtmoviechi";
+            this.txtmoviechi.Size = new System.Drawing.Size(221, 34);
+            this.txtmoviechi.TabIndex = 74;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label7.Location = new System.Drawing.Point(332, 103);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(178, 25);
+            this.label7.TabIndex = 75;
+            this.label7.Text = "中文標題Title_Cht";
+            // 
             // MovieIImagesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 946);
+            this.Controls.Add(this.txtmoviechi);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -299,5 +326,7 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtmoviechi;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -46,6 +46,8 @@ namespace WindowsFormsApp3
             this.dataGridViewMovieLanguage = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtmoviechi = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridmMovieCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridmMovie)).BeginInit();
             this.panel1.SuspendLayout();
@@ -91,10 +93,10 @@ namespace WindowsFormsApp3
             // txtMovieId
             // 
             this.txtMovieId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMovieId.Location = new System.Drawing.Point(537, 120);
+            this.txtMovieId.Location = new System.Drawing.Point(544, 167);
             this.txtMovieId.Margin = new System.Windows.Forms.Padding(4);
             this.txtMovieId.Name = "txtMovieId";
-            this.txtMovieId.Size = new System.Drawing.Size(162, 34);
+            this.txtMovieId.Size = new System.Drawing.Size(221, 34);
             this.txtMovieId.TabIndex = 75;
             // 
             // label5
@@ -103,7 +105,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(300, 189);
+            this.label5.Location = new System.Drawing.Point(307, 227);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(217, 25);
@@ -113,10 +115,10 @@ namespace WindowsFormsApp3
             // txtLanguageId
             // 
             this.txtLanguageId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtLanguageId.Location = new System.Drawing.Point(537, 185);
+            this.txtLanguageId.Location = new System.Drawing.Point(544, 224);
             this.txtLanguageId.Margin = new System.Windows.Forms.Padding(4);
             this.txtLanguageId.Name = "txtLanguageId";
-            this.txtLanguageId.Size = new System.Drawing.Size(162, 34);
+            this.txtLanguageId.Size = new System.Drawing.Size(221, 34);
             this.txtLanguageId.TabIndex = 76;
             // 
             // label3
@@ -125,7 +127,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(334, 123);
+            this.label3.Location = new System.Drawing.Point(334, 170);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(183, 25);
@@ -249,11 +251,36 @@ namespace WindowsFormsApp3
             this.label6.TabIndex = 86;
             this.label6.Text = "電影語言MovieLanguage";
             // 
+            // txtmoviechi
+            // 
+            this.txtmoviechi.Enabled = false;
+            this.txtmoviechi.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtmoviechi.Location = new System.Drawing.Point(544, 106);
+            this.txtmoviechi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtmoviechi.Name = "txtmoviechi";
+            this.txtmoviechi.Size = new System.Drawing.Size(221, 34);
+            this.txtmoviechi.TabIndex = 87;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label7.Location = new System.Drawing.Point(338, 115);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(178, 25);
+            this.label7.TabIndex = 88;
+            this.label7.Text = "中文標題Title_Cht";
+            // 
             // MovieCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 900);
+            this.Controls.Add(this.txtmoviechi);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridViewMovieLanguage);
@@ -297,5 +324,7 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.DataGridView dataGridViewMovieLanguage;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtmoviechi;
+        private System.Windows.Forms.Label label7;
     }
 }

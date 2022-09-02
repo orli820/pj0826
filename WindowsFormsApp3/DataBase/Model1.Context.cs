@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApp3
+namespace WindowsFormsApp3.DataBase
 {
     using System;
     using System.Data.Entity;

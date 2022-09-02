@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.DataBase;
 using WindowsFormsApp3.NewFolder1;
 
 namespace WindowsFormsApp3
@@ -24,7 +25,7 @@ namespace WindowsFormsApp3
         電影圖片MovieIImagesList 電影圖片MovieIImagesList = new 電影圖片MovieIImagesList();
         ImageToBinary picTool = new ImageToBinary();
         MDAEntities2 db = new MDAEntities2();
-        Immodel immodel;
+        
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -43,8 +44,16 @@ namespace WindowsFormsApp3
 
         private void dataGridViewMovieImageList_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             txtMovieId.Text = dataGridViewMovieImageList.CurrentRow.Cells["電影編號Movie_ID"].Value.ToString();
             txtImageId.Text = dataGridViewMovieImageList.CurrentRow.Cells["圖片編號Image_ID"].Value.ToString();
+            txtmoviechi.Text = dataGridViewMovie.Rows[int.Parse(txtMovieId.Text)-1].Cells["中文標題Title_Cht"].Value.ToString();
+
+
+            byte[] ByteData = (byte[])dataGridViewMovieImage.Rows[int.Parse(txtImageId.Text)-1].Cells["圖片Image"].Value;
+            MemoryStream ms = new MemoryStream(ByteData);
+            ptbshow.Image = Image.FromStream(ms);
+            ms.Close();
         }
                 
         void showdataMovie()
@@ -57,7 +66,9 @@ namespace WindowsFormsApp3
 
         private void dataGridViewMovie_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
+            txtImageId.Text = "";
             txtMovieId.Text = dataGridViewMovie.CurrentRow.Cells["電影編號Movie_ID"].Value.ToString();
+            txtmoviechi.Text = dataGridViewMovie.CurrentRow.Cells["中文標題Title_Cht"].Value.ToString();
         }
 
         void showdataMovieImage()

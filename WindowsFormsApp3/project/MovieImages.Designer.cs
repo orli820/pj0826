@@ -39,6 +39,8 @@ namespace WindowsFormsApp3
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtkeyword = new System.Windows.Forms.TextBox();
+            this.btnsearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ptbshow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovieImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -139,6 +141,8 @@ namespace WindowsFormsApp3
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnsearch);
+            this.panel1.Controls.Add(this.txtkeyword);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnADDMOVIE);
             this.panel1.Controls.Add(this.btnMovieUpDate);
@@ -147,6 +151,27 @@ namespace WindowsFormsApp3
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(275, 1030);
             this.panel1.TabIndex = 36;
+            // 
+            // txtkeyword
+            // 
+            this.txtkeyword.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtkeyword.Location = new System.Drawing.Point(74, 498);
+            this.txtkeyword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtkeyword.Name = "txtkeyword";
+            this.txtkeyword.Size = new System.Drawing.Size(127, 34);
+            this.txtkeyword.TabIndex = 72;
+            // 
+            // btnsearch
+            // 
+            this.btnsearch.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnsearch.Location = new System.Drawing.Point(95, 540);
+            this.btnsearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnsearch.Name = "btnsearch";
+            this.btnsearch.Size = new System.Drawing.Size(74, 43);
+            this.btnsearch.TabIndex = 73;
+            this.btnsearch.Text = "搜尋";
+            this.btnsearch.UseVisualStyleBackColor = true;
+            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
             // 
             // MovieImages
             // 
@@ -181,6 +206,8 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtkeyword;
+        private System.Windows.Forms.Button btnsearch;
     }
 }
 

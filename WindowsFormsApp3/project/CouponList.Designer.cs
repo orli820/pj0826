@@ -38,16 +38,29 @@ namespace WindowsFormsApp3
             this.btnLanguageUpDate = new System.Windows.Forms.Button();
             this.btnLanguageAdd = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtmemberid = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewcplist = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtseachcouponlist = new System.Windows.Forms.TextBox();
+            this.txtsearchcoupon = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtsearchmember = new System.Windows.Forms.TextBox();
+            this.btnsearch = new System.Windows.Forms.Button();
             this.btnviewBonus = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtmemberid = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtcpName = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoupon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMember)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewcplist)).BeginInit();
@@ -57,7 +70,7 @@ namespace WindowsFormsApp3
             // dataGridViewCoupon
             // 
             this.dataGridViewCoupon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCoupon.Location = new System.Drawing.Point(960, 143);
+            this.dataGridViewCoupon.Location = new System.Drawing.Point(954, 143);
             this.dataGridViewCoupon.Name = "dataGridViewCoupon";
             this.dataGridViewCoupon.RowHeadersWidth = 51;
             this.dataGridViewCoupon.RowTemplate.Height = 27;
@@ -78,18 +91,18 @@ namespace WindowsFormsApp3
             // dataGridViewMember
             // 
             this.dataGridViewMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMember.Location = new System.Drawing.Point(1613, 148);
+            this.dataGridViewMember.Location = new System.Drawing.Point(1601, 148);
             this.dataGridViewMember.Name = "dataGridViewMember";
             this.dataGridViewMember.RowHeadersWidth = 51;
             this.dataGridViewMember.RowTemplate.Height = 27;
-            this.dataGridViewMember.Size = new System.Drawing.Size(299, 611);
+            this.dataGridViewMember.Size = new System.Drawing.Size(370, 611);
             this.dataGridViewMember.TabIndex = 67;
             this.dataGridViewMember.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewMember_CellMouseUp);
             // 
             // txtCoupon_ID
             // 
             this.txtCoupon_ID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCoupon_ID.Location = new System.Drawing.Point(619, 129);
+            this.txtCoupon_ID.Location = new System.Drawing.Point(638, 136);
             this.txtCoupon_ID.Margin = new System.Windows.Forms.Padding(4);
             this.txtCoupon_ID.Name = "txtCoupon_ID";
             this.txtCoupon_ID.Size = new System.Drawing.Size(162, 34);
@@ -101,7 +114,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(339, 132);
+            this.label5.Location = new System.Drawing.Point(355, 136);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(200, 25);
@@ -114,7 +127,7 @@ namespace WindowsFormsApp3
             this.labChage.BackColor = System.Drawing.Color.Red;
             this.labChage.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.labChage.ForeColor = System.Drawing.Color.Yellow;
-            this.labChage.Location = new System.Drawing.Point(347, 241);
+            this.labChage.Location = new System.Drawing.Point(363, 245);
             this.labChage.Name = "labChage";
             this.labChage.Size = new System.Drawing.Size(77, 38);
             this.labChage.TabIndex = 80;
@@ -123,7 +136,7 @@ namespace WindowsFormsApp3
             // btnLanguageUpDate
             // 
             this.btnLanguageUpDate.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnLanguageUpDate.Location = new System.Drawing.Point(93, 198);
+            this.btnLanguageUpDate.Location = new System.Drawing.Point(61, 215);
             this.btnLanguageUpDate.Margin = new System.Windows.Forms.Padding(4);
             this.btnLanguageUpDate.Name = "btnLanguageUpDate";
             this.btnLanguageUpDate.Size = new System.Drawing.Size(114, 54);
@@ -135,7 +148,7 @@ namespace WindowsFormsApp3
             // btnLanguageAdd
             // 
             this.btnLanguageAdd.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnLanguageAdd.Location = new System.Drawing.Point(93, 114);
+            this.btnLanguageAdd.Location = new System.Drawing.Point(61, 131);
             this.btnLanguageAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnLanguageAdd.Name = "btnLanguageAdd";
             this.btnLanguageAdd.Size = new System.Drawing.Size(114, 56);
@@ -150,21 +163,12 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(339, 186);
+            this.label2.Location = new System.Drawing.Point(355, 190);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(264, 25);
             this.label2.TabIndex = 75;
             this.label2.Text = "是否使用OX_CouponUsing";
-            // 
-            // txtmemberid
-            // 
-            this.txtmemberid.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtmemberid.Location = new System.Drawing.Point(619, 73);
-            this.txtmemberid.Margin = new System.Windows.Forms.Padding(4);
-            this.txtmemberid.Name = "txtmemberid";
-            this.txtmemberid.Size = new System.Drawing.Size(162, 34);
-            this.txtmemberid.TabIndex = 72;
             // 
             // label1
             // 
@@ -172,7 +176,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(987, 64);
+            this.label1.Location = new System.Drawing.Point(981, 64);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 25);
@@ -181,26 +185,13 @@ namespace WindowsFormsApp3
             // dataGridViewcplist
             // 
             this.dataGridViewcplist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewcplist.Location = new System.Drawing.Point(341, 343);
+            this.dataGridViewcplist.Location = new System.Drawing.Point(343, 343);
             this.dataGridViewcplist.Name = "dataGridViewcplist";
             this.dataGridViewcplist.RowHeadersWidth = 51;
             this.dataGridViewcplist.RowTemplate.Height = 27;
             this.dataGridViewcplist.Size = new System.Drawing.Size(588, 416);
             this.dataGridViewcplist.TabIndex = 83;
             this.dataGridViewcplist.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewcplist_CellMouseUp);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(336, 82);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(204, 25);
-            this.label3.TabIndex = 85;
-            this.label3.Text = "會員編號Member_ID";
             // 
             // comboBox1
             // 
@@ -209,26 +200,162 @@ namespace WindowsFormsApp3
             this.comboBox1.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.comboBox1.Location = new System.Drawing.Point(626, 186);
+            this.comboBox1.Location = new System.Drawing.Point(642, 190);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(155, 35);
             this.comboBox1.TabIndex = 86;
+            this.comboBox1.UseWaitCursor = true;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.comboBox3);
+            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.txtseachcouponlist);
+            this.panel1.Controls.Add(this.txtsearchcoupon);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.txtsearchmember);
+            this.panel1.Controls.Add(this.btnsearch);
             this.panel1.Controls.Add(this.btnviewBonus);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnLanguageAdd);
             this.panel1.Controls.Add(this.btnLanguageUpDate);
-            this.panel1.Location = new System.Drawing.Point(2, 1);
+            this.panel1.Location = new System.Drawing.Point(22, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(295, 774);
+            this.panel1.Size = new System.Drawing.Size(315, 774);
             this.panel1.TabIndex = 87;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.Location = new System.Drawing.Point(127, 564);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(132, 25);
+            this.label13.TabIndex = 98;
+            this.label13.Text = "是否使用優惠";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label12.Location = new System.Drawing.Point(127, 489);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(92, 25);
+            this.label12.TabIndex = 97;
+            this.label12.Text = "截止日期";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.Font = new System.Drawing.Font("新細明體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(130, 592);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(145, 35);
+            this.comboBox3.TabIndex = 96;
+            this.comboBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.comboBox3_MouseDown);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("新細明體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(130, 518);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(145, 35);
+            this.comboBox2.TabIndex = 91;
+            this.comboBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.comboBox2_MouseDown);
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label11.Location = new System.Drawing.Point(17, 556);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(92, 25);
+            this.label11.TabIndex = 95;
+            this.label11.Text = "優惠明細";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label10.Location = new System.Drawing.Point(17, 489);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(92, 25);
+            this.label10.TabIndex = 94;
+            this.label10.Text = "優惠總表";
+            // 
+            // txtseachcouponlist
+            // 
+            this.txtseachcouponlist.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtseachcouponlist.Location = new System.Drawing.Point(22, 594);
+            this.txtseachcouponlist.Margin = new System.Windows.Forms.Padding(4);
+            this.txtseachcouponlist.Name = "txtseachcouponlist";
+            this.txtseachcouponlist.Size = new System.Drawing.Size(87, 34);
+            this.txtseachcouponlist.TabIndex = 93;
+            // 
+            // txtsearchcoupon
+            // 
+            this.txtsearchcoupon.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtsearchcoupon.Location = new System.Drawing.Point(21, 518);
+            this.txtsearchcoupon.Margin = new System.Windows.Forms.Padding(4);
+            this.txtsearchcoupon.Name = "txtsearchcoupon";
+            this.txtsearchcoupon.Size = new System.Drawing.Size(88, 34);
+            this.txtsearchcoupon.TabIndex = 92;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label9.Location = new System.Drawing.Point(17, 422);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(92, 25);
+            this.label9.TabIndex = 91;
+            this.label9.Text = "會員搜尋";
+            // 
+            // txtsearchmember
+            // 
+            this.txtsearchmember.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtsearchmember.Location = new System.Drawing.Point(21, 451);
+            this.txtsearchmember.Margin = new System.Windows.Forms.Padding(4);
+            this.txtsearchmember.Name = "txtsearchmember";
+            this.txtsearchmember.Size = new System.Drawing.Size(88, 34);
+            this.txtsearchmember.TabIndex = 90;
+            // 
+            // btnsearch
+            // 
+            this.btnsearch.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnsearch.Location = new System.Drawing.Point(49, 646);
+            this.btnsearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnsearch.Name = "btnsearch";
+            this.btnsearch.Size = new System.Drawing.Size(74, 43);
+            this.btnsearch.TabIndex = 89;
+            this.btnsearch.Text = "搜尋";
+            this.btnsearch.UseVisualStyleBackColor = true;
+            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
             // 
             // btnviewBonus
             // 
             this.btnviewBonus.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnviewBonus.Location = new System.Drawing.Point(93, 291);
+            this.btnviewBonus.Location = new System.Drawing.Point(61, 308);
             this.btnviewBonus.Margin = new System.Windows.Forms.Padding(4);
             this.btnviewBonus.Name = "btnviewBonus";
             this.btnviewBonus.Size = new System.Drawing.Size(114, 59);
@@ -243,7 +370,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(1608, 115);
+            this.label6.Location = new System.Drawing.Point(1605, 120);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(143, 25);
@@ -256,7 +383,7 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(955, 115);
+            this.label7.Location = new System.Drawing.Point(949, 115);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(170, 25);
@@ -269,18 +396,65 @@ namespace WindowsFormsApp3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label8.Location = new System.Drawing.Point(336, 315);
+            this.label8.Location = new System.Drawing.Point(338, 315);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(212, 25);
             this.label8.TabIndex = 90;
             this.label8.Text = "優惠明細CouponLists";
             // 
+            // txtmemberid
+            // 
+            this.txtmemberid.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtmemberid.Location = new System.Drawing.Point(638, 42);
+            this.txtmemberid.Margin = new System.Windows.Forms.Padding(4);
+            this.txtmemberid.Name = "txtmemberid";
+            this.txtmemberid.Size = new System.Drawing.Size(162, 34);
+            this.txtmemberid.TabIndex = 72;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Location = new System.Drawing.Point(355, 51);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(204, 25);
+            this.label3.TabIndex = 85;
+            this.label3.Text = "會員編號Member_ID";
+            // 
+            // txtcpName
+            // 
+            this.txtcpName.Enabled = false;
+            this.txtcpName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtcpName.Location = new System.Drawing.Point(638, 88);
+            this.txtcpName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtcpName.Name = "txtcpName";
+            this.txtcpName.Size = new System.Drawing.Size(162, 34);
+            this.txtcpName.TabIndex = 91;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label14.Location = new System.Drawing.Point(355, 97);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(236, 25);
+            this.label14.TabIndex = 92;
+            this.label14.Text = "優惠名稱Coupon_Name";
+            // 
             // CouponList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 784);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtcpName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -319,15 +493,28 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.Button btnLanguageUpDate;
         private System.Windows.Forms.Button btnLanguageAdd;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtmemberid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewcplist;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnviewBonus;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtsearchmember;
+        private System.Windows.Forms.Button btnsearch;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtsearchcoupon;
+        private System.Windows.Forms.TextBox txtseachcouponlist;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtmemberid;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtcpName;
+        private System.Windows.Forms.Label label14;
     }
 }

@@ -7,27 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApp3
+namespace WindowsFormsApp3.DataBase
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class 優惠總表Coupon
+    public partial class 電影語言MovieLanguage
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public 優惠總表Coupon()
+        public 電影語言MovieLanguage()
         {
-            this.優惠明細CouponLists = new HashSet<優惠明細CouponLists>();
+            this.電影代碼MovieCode = new HashSet<電影代碼MovieCode>();
         }
     
-        public int 優惠編號Coupon_ID { get; set; }
-        public string 優惠名稱Coupon_Name { get; set; }
-        public decimal 優惠折扣CouponDiscount { get; set; }
-        public string 優惠代碼Coupon_Code { get; set; }
-        public System.DateTime 優惠截止日期CouponDueDate { get; set; }
-        public int 優惠所需紅利BonusCost { get; set; }
+        public int 語言編號Language_ID { get; set; }
+        public string 語言名稱Language_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<優惠明細CouponLists> 優惠明細CouponLists { get; set; }
+        public virtual ICollection<電影代碼MovieCode> 電影代碼MovieCode { get; set; }
     }
 }

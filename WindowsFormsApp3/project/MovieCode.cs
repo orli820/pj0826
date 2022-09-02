@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.DataBase;
 
 namespace WindowsFormsApp3
 {
@@ -75,19 +76,21 @@ namespace WindowsFormsApp3
 
         private void dataGridmMovie_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
+            txtLanguageId.Text = "";
             txtMovieId.Text = dataGridmMovie.CurrentRow.Cells["電影編號Movie_ID"].Value.ToString();
+            txtmoviechi.Text = dataGridmMovie.CurrentRow.Cells["中文標題Title_Cht"].Value.ToString();
         }
 
         private void dataGridViewMovieLanguage_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txtMovieId.Text = dataGridmMovieCode.CurrentRow.Cells["電影編號Movie_ID"].Value.ToString();
-            txtLanguageId.Text = dataGridmMovieCode.CurrentRow.Cells["語言編號Language_ID"].Value.ToString();
+            txtLanguageId.Text = dataGridViewMovieLanguage.CurrentRow.Cells["語言編號Language_ID"].Value.ToString();
         }
 
         private void dataGridmMovieCode_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             txtMovieId.Text = dataGridmMovieCode.CurrentRow.Cells["電影編號Movie_ID"].Value.ToString();
             txtLanguageId.Text = dataGridmMovieCode.CurrentRow.Cells["語言編號Language_ID"].Value.ToString();
+            txtmoviechi.Text = dataGridmMovie.Rows[int.Parse(txtMovieId.Text) - 1].Cells["中文標題Title_Cht"].Value.ToString();
         }
     }
 }

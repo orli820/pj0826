@@ -46,6 +46,11 @@ namespace WindowsFormsApp3
             this.txtCouponCode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtsearch = new System.Windows.Forms.TextBox();
+            this.btnsearch = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoupon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -233,25 +238,88 @@ namespace WindowsFormsApp3
             // panel1
             // 
             this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.txtsearch);
+            this.panel1.Controls.Add(this.btnsearch);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnLanguageAdd);
             this.panel1.Controls.Add(this.btnLanguageUpDate);
             this.panel1.Controls.Add(this.btnviewBonus);
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 576);
+            this.panel1.Size = new System.Drawing.Size(200, 741);
             this.panel1.TabIndex = 70;
+            // 
+            // txtsearch
+            // 
+            this.txtsearch.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtsearch.Location = new System.Drawing.Point(27, 409);
+            this.txtsearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtsearch.Name = "txtsearch";
+            this.txtsearch.Size = new System.Drawing.Size(127, 34);
+            this.txtsearch.TabIndex = 71;
+            // 
+            // btnsearch
+            // 
+            this.btnsearch.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnsearch.Location = new System.Drawing.Point(56, 461);
+            this.btnsearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnsearch.Name = "btnsearch";
+            this.btnsearch.Size = new System.Drawing.Size(74, 43);
+            this.btnsearch.TabIndex = 67;
+            this.btnsearch.Text = "搜尋";
+            this.btnsearch.UseVisualStyleBackColor = true;
+            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label7.Location = new System.Drawing.Point(22, 380);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(132, 25);
+            this.label7.TabIndex = 71;
+            this.label7.Text = "請輸入關鍵字";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label8.Location = new System.Drawing.Point(22, 546);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 25);
+            this.label8.TabIndex = 72;
+            this.label8.Text = "優惠截止日期";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("新細明體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(18, 584);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(155, 35);
+            this.comboBox1.TabIndex = 87;
+            this.comboBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.comboBox1_MouseDown);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(56, 365);
+            this.button1.Location = new System.Drawing.Point(56, 638);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 43);
-            this.button1.TabIndex = 67;
-            this.button1.Text = "檢視";
+            this.button1.TabIndex = 88;
+            this.button1.Text = "搜尋";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Coupon
             // 
@@ -300,6 +368,11 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.TextBox txtCouponCode;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnsearch;
+        private System.Windows.Forms.TextBox txtsearch;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

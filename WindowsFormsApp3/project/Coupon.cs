@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.DataBase;
 
 namespace WindowsFormsApp3
 {
@@ -91,6 +92,42 @@ namespace WindowsFormsApp3
             txtDueday.Text =Convert.ToDateTime(dataGridViewCoupon.CurrentRow.Cells["優惠截止日期CouponDueDate"].Value).ToString("yyyy/MM/dd");
 
             txtPoint.Text = dataGridViewCoupon.CurrentRow.Cells["優惠所需紅利BonusCost"].Value.ToString();
+        }
+
+        
+        private void btnsearch_Click(object sender, EventArgs e)
+        {
+            if (txtsearch.Text != "")
+            {
+                var q = from a in db.優惠總表Coupon.AsEnumerable()
+                        where a.優惠代碼Coupon_Code.Contains(txtsearch.Text)
+                        || a.優惠名稱Coupon_Name.Contains(txtsearch.Text)
+                        || a.優惠所需紅利BonusCost.ToString().Contains(txtsearch.Text)
+                        || a.優惠折扣CouponDiscount.ToString().Contains(txtsearch.Text)
+                        || a.優惠編號Coupon_ID.ToString().Contains(txtsearch.Text)
+                        || a.優惠截止日期CouponDueDate.ToString().Contains(txtsearch.Text)
+                        select new { a.優惠編號Coupon_ID, a.優惠名稱Coupon_Name, a.優惠代碼Coupon_Code, a.優惠折扣CouponDiscount, a.優惠截止日期CouponDueDate, a.優惠所需紅利BonusCost };
+                dataGridViewCoupon.DataSource = q.ToList();
+            }
+            else 
+            MessageBox.Show("請輸入關鍵字"); 
+        }
+
+        private void comboBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            var q = (from a in db.優惠總表Coupon
+                     orderby a.優惠截止日期CouponDueDate ascending
+                     select a.優惠截止日期CouponDueDate).Distinct();
+            comboBox1.DataSource = q.ToList();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var q = from a in db.優惠總表Coupon.AsEnumerable()
+                    where a.優惠截止日期CouponDueDate== Convert.ToDateTime(comboBox1.Text)
+                    select new { a.優惠編號Coupon_ID, a.優惠名稱Coupon_Name, a.優惠代碼Coupon_Code, a.優惠折扣CouponDiscount, a.優惠截止日期CouponDueDate, a.優惠所需紅利BonusCost };
+            dataGridViewCoupon.DataSource = q.ToList();
+
         }
     }
 }
